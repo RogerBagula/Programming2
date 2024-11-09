@@ -1,0 +1,712 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30974,        704]
+NotebookOptionsPosition[     19089,        453]
+NotebookOutlinePosition[     29479,        672]
+CellTagsIndexPosition[     29411,        667]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"source", " ", "code", " ", "from"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.940081527178007*^9, 3.940081538288937*^9}},
+ CellID->310897011,ExpressionUUID->"a8f4a16a-9da4-4348-9957-f5c7d5b5595a"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"https", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"www", ".", "wolframcloud", ".", "com"}], "/", "obj"}], "/", 
+       "59"}], "e478b6"}], "-", "f0ac", "-", 
+     RowBox[{"498", "a"}], "-", 
+     RowBox[{"8", "d00"}], "-", 
+     RowBox[{"3", 
+      RowBox[{"eab12392073", "?", "src"}]}]}]}], "=", 
+   "CloudBasicCopiedContent"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.9400812834089317`*^9, 3.9400812938273907`*^9}},
+ CellID->1645811604,ExpressionUUID->"038d19e7-ad14-44de-afc9-82c24b592f7a"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Contributed", " ", 
+   RowBox[{"by", ":", 
+    RowBox[{
+     RowBox[{"S\[AAcute]ndor", " ", "Kabai", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"January", " ", "1"}], ",", "1999"}], ")"}], "\n", "Open", 
+      " ", "content", " ", "licensed", " ", "under", " ", "CC", " ", "BY"}], 
+     "-", "NC", "-", "SA"}]}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.9400814907036963`*^9, 3.940081502929315*^9}},
+ CellID->712488240,ExpressionUUID->"0ec837f3-ae7e-4a3e-b49d-091e63f6636e"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"https", ":"}], "//", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"demonstrations", ".", "wolfram", ".", "com"}], "/", 
+     "FractalTetrahedronInAnOctahedron"}], "/"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.940081517738955*^9, 3.940081523249256*^9}},
+ CellID->1359042620,ExpressionUUID->"f09bc4ee-2c51-449e-bf51-a6ccc56031ed"],
+
+Cell[CellGroupData[{
+
+Cell["Fractal Tetrahedron in an Gyrobifastigium", "Title",
+ CellChangeTimes->{3.9400803773763523`*^9},
+ CellTags->"Title",
+ CellID->1267820797,ExpressionUUID->"99d509f7-4a0e-4077-b8fd-09d8ad81438d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "where", ",", " ", "tet", ",", " ", "t0", ",", "t4a", ",", "t4b", ",", 
+       "u1", ",", "u2", ",", "u3"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"where", "=", 
+       RowBox[{"PolyhedronData", "[", 
+        RowBox[{"\"\<Gyrobifastigium\>\"", ",", "\"\<VertexCoordinates\>\""}],
+         "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"tet", "=", 
+       RowBox[{"PolyhedronData", "[", 
+        RowBox[{"\"\<Tetrahedron\>\"", ",", "\"\<Faces\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"t0", "=", 
+       RowBox[{"Translate", "[", 
+        RowBox[{
+         RowBox[{"Rotate", "[", 
+          RowBox[{"tet", ",", 
+           RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+             SqrtBox["2"], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{
+            RowBox[{"-", "0.5"}], "  ", "fly"}], ",", 
+           RowBox[{"fly", "  ", 
+            RowBox[{"0.5", "/", 
+             SqrtBox["2"]}]}]}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"t4a", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Rotate", "[", 
+          RowBox[{"t0", " ", ",", 
+           RowBox[{
+            RowBox[{"i", " ", "2", 
+             RowBox[{"Pi", "/", "4"}]}], "+", 
+            RowBox[{"Pi", "/", "4"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "4"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"t4b", "=", 
+       RowBox[{"Rotate", "[", 
+        RowBox[{"t4a", ",", "Pi", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"u1", "=", 
+       RowBox[{"{", 
+        RowBox[{"t4a", ",", "t4b"}], "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"u2", "=", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Translate", "[", 
+           RowBox[{
+            RowBox[{"Scale", "[", 
+             RowBox[{"u1", ",", 
+              RowBox[{"0.5", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "1", ",", "1"}], "}"}]}]}], "]"}], ",", 
+            "#"}], "]"}], "&"}], ",", " ", 
+         RowBox[{"fly1", " ", "where"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"u3", "=", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Translate", "[", 
+           RowBox[{
+            RowBox[{"Scale", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"RGBColor", "[", 
+                   RowBox[{"0", ",", "1", ",", "1"}], "]"}], ",", "u1"}], 
+                 "}"}], ",", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "]"}], ",", "u2"}], "}"}],
+               ",", 
+              RowBox[{"0.5", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "1", ",", "1"}], "}"}]}]}], "]"}], ",", 
+            "#"}], "]"}], "&"}], ",", " ", 
+         RowBox[{"fly2", "  ", "where"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"gout", "=", 
+       RowBox[{"Graphics3D", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "]"}], ",", 
+           RowBox[{"Opacity", "[", "0.5", "]"}], ",", "u3", ",", "Yellow", 
+           ",", "u1"}], "}"}], ",", 
+         RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+         RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+         RowBox[{"ViewPoint", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"5", ",", 
+            RowBox[{"-", "2"}], ",", "1"}], "}"}]}], ",", 
+         RowBox[{"ViewAngle", "\[Rule]", "0.17"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "2.7"}]}], "]"}]}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"fly2", ",", "2", " ", ",", "\"\<fly apart 2\>\""}], "}"}], ",",
+      "1", ",", "2"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"fly1", ",", "1", " ", ",", "\"\<fly apart 1\>\""}], "}"}], ",",
+      "1", ",", "1.6"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"fly", ",", "1", " ", ",", "\"\<fly apart\>\""}], "}"}], ",", 
+     "1", ",", "1.3"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"fly", ",", "fly1", ",", "fly2"}], "}"}]}]}], "]"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.38986538*^9, 3.389865420734375*^9}, {3.38986554025*^9, 
+   3.38986565121875*^9}, {3.389865696984375*^9, 3.389865759046875*^9}, {
+   3.389865789625*^9, 3.38986608909375*^9}, {3.389866132890625*^9, 
+   3.38986620378125*^9}, {3.389866239625*^9, 3.389866275671875*^9}, {
+   3.389866340625*^9, 3.38986650053125*^9}, {3.38986653684375*^9, 
+   3.3898665558125*^9}, {3.38986658703125*^9, 3.38986667*^9}, {
+   3.3898667054375*^9, 3.389866754359375*^9}, {3.389866797859375*^9, 
+   3.389866844046875*^9}, {3.38986689246875*^9, 3.38986695846875*^9}, {
+   3.389867001875*^9, 3.3898671790625*^9}, {3.3898672235*^9, 
+   3.389867285921875*^9}, {3.38986731990625*^9, 3.3898674019375*^9}, {
+   3.389867449625*^9, 3.389867774765625*^9}, {3.394725686015625*^9, 
+   3.394725732765625*^9}, {3.39472576828125*^9, 3.394725777703125*^9}, {
+   3.3947261124375*^9, 3.394726225171875*^9}, {3.394726258234375*^9, 
+   3.39472626128125*^9}, {3.39472641940625*^9, 3.3947264375*^9}, {
+   3.39472647803125*^9, 3.39472649778125*^9}, {3.3947273508125*^9, 
+   3.394727380109375*^9}, {3.394727495875*^9, 3.394727497125*^9}, {
+   3.39472771646875*^9, 3.394727810875*^9}, {3.3947279440625*^9, 
+   3.39472796853125*^9}, {3.394728002625*^9, 3.394728024234375*^9}, 
+   3.394728092359375*^9, {3.394728141*^9, 3.39472816528125*^9}, {
+   3.39472820971875*^9, 3.39472822071875*^9}, {3.39472829675*^9, 
+   3.394728297640625*^9}, {3.394728383125*^9, 3.394728384171875*^9}, {
+   3.39472842603125*^9, 3.3947284558125*^9}, {3.394728505234375*^9, 
+   3.39472852553125*^9}, {3.394728582140625*^9, 3.394728583046875*^9}, {
+   3.394728633640625*^9, 3.3947286345625*^9}, {3.39472868175*^9, 
+   3.394728693515625*^9}, {3.394728727484375*^9, 3.3947287733125*^9}, {
+   3.394728809890625*^9, 3.394728811078125*^9}, {3.39472885871875*^9, 
+   3.39472886034375*^9}, {3.44370370428125*^9, 3.443703706421875*^9}, {
+   3.443848057015625*^9, 3.44384806521875*^9}, {3.6250357059375*^9, 
+   3.625035736453125*^9}, {3.625035775140625*^9, 3.625035826203125*^9}, {
+   3.62503587015625*^9, 3.6250359085625*^9}, {3.62503595984375*^9, 
+   3.62503604584375*^9}, {3.62503610940625*^9, 3.625036167078125*^9}, {
+   3.6250368591875*^9, 3.62503693703125*^9}, {3.62503698028125*^9, 
+   3.625037002125*^9}, {3.625037033421875*^9, 3.62503715603125*^9}, {
+   3.625037248578125*^9, 3.62503730215625*^9}, {3.625037378234375*^9, 
+   3.625037430828125*^9}, {3.625037472203125*^9, 3.625037521875*^9}, {
+   3.625037593078125*^9, 3.625037690125*^9}, {3.62503772721875*^9, 
+   3.625037774671875*^9}, {3.62503781103125*^9, 3.625037882859375*^9}, {
+   3.62503794896875*^9, 3.625037950328125*^9}, {3.625037989046875*^9, 
+   3.625037996203125*^9}, {3.625038055578125*^9, 3.62503807084375*^9}, {
+   3.62504008378125*^9, 3.62504017084375*^9}, {3.625040209171875*^9, 
+   3.62504029303125*^9}, {3.625040367734375*^9, 3.625040432921875*^9}, {
+   3.625040493734375*^9, 3.625040531578125*^9}, {3.6250405699375*^9, 
+   3.625040625203125*^9}, {3.62504066034375*^9, 3.625040661890625*^9}, {
+   3.62504075825*^9, 3.625040790921875*^9}, {3.625040878484375*^9, 
+   3.6250409333125*^9}, {3.625040975390625*^9, 3.625040987953125*^9}, {
+   3.625041030234375*^9, 3.6250411046875*^9}, {3.6250411530625*^9, 
+   3.625041169296875*^9}, {3.62504122484375*^9, 3.625041288765625*^9}, 
+   3.62504142471875*^9, {3.6250414750625*^9, 3.625041481078125*^9}, {
+   3.625042379359375*^9, 3.625042425*^9}, 3.6250424583125*^9, {
+   3.625042846234375*^9, 3.62504286659375*^9}, {3.625042912890625*^9, 
+   3.62504291578125*^9}, {3.625042950328125*^9, 3.625042961125*^9}, {
+   3.625043034828125*^9, 3.62504306625*^9}, {3.625043136046875*^9, 
+   3.62504313809375*^9}, {3.62504363415625*^9, 3.625043649625*^9}, 
+   3.6252383843826094`*^9, {3.6252385162145395`*^9, 3.625238532672307*^9}, {
+   3.625253158336817*^9, 3.625253179340502*^9}, 3.733440883859399*^9, {
+   3.9399932604334173`*^9, 3.939993262174118*^9}, {3.940080264488926*^9, 
+   3.940080308719529*^9}, {3.940080447723208*^9, 3.940080453966236*^9}, {
+   3.940080841772521*^9, 3.940080849089663*^9}, {3.940081911298628*^9, 
+   3.940081922775239*^9}},
+ CellLabel->"In[9]:=",
+ CellID->53475798,ExpressionUUID->"5296c87f-9429-4338-bcd4-c3e6b9468eea"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`fly$$ = 1, $CellContext`fly1$$ = 
+    1, $CellContext`fly2$$ = 1., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`fly2$$], 2, "fly apart 2"}, 1, 2}, {{
+       Hold[$CellContext`fly1$$], 1, "fly apart 1"}, 1, 1.6}, {{
+       Hold[$CellContext`fly$$], 1, "fly apart"}, 1, 1.3}}, Typeset`size$$ = {
+    400., {198., 202.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`fly$$ = 1, $CellContext`fly1$$ = 
+        1, $CellContext`fly2$$ = 2}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`where$, $CellContext`tet$, $CellContext`t0$, \
+$CellContext`t4a$, $CellContext`t4b$, $CellContext`u1$, $CellContext`u2$, \
+$CellContext`u3$}, $CellContext`where$ = 
+         PolyhedronData[
+          "Gyrobifastigium", "VertexCoordinates"]; $CellContext`tet$ = 
+         PolyhedronData["Tetrahedron", "Faces"]; $CellContext`t0$ = Translate[
+           Rotate[$CellContext`tet$, -ArcTan[
+              Sqrt[2]], {0, 1, 0}], {
+           0, (-0.5) $CellContext`fly$$, $CellContext`fly$$ (0.5/Sqrt[
+             2])}]; $CellContext`t4a$ = Table[
+           
+           Rotate[$CellContext`t0$, $CellContext`i 2 (Pi/4) + Pi/4, {0, 0, 
+            1}], {$CellContext`i, 4}]; $CellContext`t4b$ = 
+         Rotate[$CellContext`t4a$, Pi, {0, 1, 
+           0}]; $CellContext`u1$ = {$CellContext`t4a$, $CellContext`t4b$}; \
+$CellContext`u2$ = Map[Translate[
+            
+            Scale[$CellContext`u1$, 
+             0.5 {1, 1, 
+              1}], #]& , $CellContext`fly1$$ $CellContext`where$]; \
+$CellContext`u3$ = Map[Translate[
+            Scale[{{
+               RGBColor[0, 1, 1], $CellContext`u1$}, 
+              RGBColor[0, 0, 1], $CellContext`u2$}, 
+             0.5 {1, 1, 
+              1}], #]& , $CellContext`fly2$$ $CellContext`where$]; \
+$CellContext`gout = Graphics3D[{
+            EdgeForm[], 
+            Opacity[0.5], $CellContext`u3$, Yellow, $CellContext`u1$}, Boxed -> 
+           False, SphericalRegion -> True, ImageSize -> 400, 
+           ViewPoint -> {5, -2, 1}, ViewAngle -> 0.17, PlotRange -> 2.7]], 
+      "Specifications" :> {{{$CellContext`fly2$$, 2, "fly apart 2"}, 1, 
+         2}, {{$CellContext`fly1$$, 1, "fly apart 1"}, 1, 
+         1.6}, {{$CellContext`fly$$, 1, "fly apart"}, 1, 1.3}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`fly$$, $CellContext`fly1$$, \
+$CellContext`fly2$$}}, "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{443., {270., 276.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.625253161323263*^9, 3.625253185225554*^9}, 
+   3.733440883859777*^9, 3.939993269874312*^9, 3.940080338785686*^9, 
+   3.940080460089514*^9, 3.940080860096478*^9, 3.940081929093945*^9},
+ CellLabel->"Out[9]=",
+ CellID->847797724,ExpressionUUID->"157b4059-01e8-4963-9e14-4de0dd61d89a"]
+}, Open  ]],
+
+Cell["\<\
+Infinitely many tetrahedra arranged in a fractal structure fill an \
+Gyrobifastigium.\
+\>", "Text",
+ CellChangeTimes->{3.940080907368819*^9},
+ CellID->1987714847,ExpressionUUID->"0cb733f3-74b6-4224-835a-5185477b9b58"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gg", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gout", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "2000"}], ",", 
+     RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+     RowBox[{"ViewPoint", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"5", ",", "5", ",", "5"}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<Fractal_Tetrahedrons_in_an_Gyrobifastigium.jpg\>\"", ",", "gg"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.940080480542267*^9, 3.94008053142866*^9}, {
+  3.940080648392557*^9, 3.940080802384507*^9}, {3.94008221307766*^9, 
+  3.940082232299348*^9}, {3.9400823411158133`*^9, 3.9400823441135263`*^9}},
+ CellLabel->"In[22]:=",
+ CellID->229921088,ExpressionUUID->"06375de0-d4a2-4001-bc3c-63e8eec79927"],
+
+Cell[BoxData["\<\"Fractal_Tetrahedrons_in_an_Gyrobifastigium.jpg\"\>"], \
+"Output",
+ CellChangeTimes->{3.940080938890395*^9, 3.94008198923204*^9, 
+  3.94008229097151*^9, 3.940082423917225*^9},
+ CellLabel->"Out[23]=",
+ CellID->1486312326,ExpressionUUID->"6307aa2d-6171-45cd-80f4-6328938a7ae8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"g2", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gg", ",", 
+     RowBox[{"ViewPoint", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "5"}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"g3", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gg", ",", 
+     RowBox[{"ViewPoint", "\[Rule]", 
+      RowBox[{"2.5", "*", 
+       RowBox[{"{", 
+        RowBox[{"1.3", ",", " ", 
+         RowBox[{"-", "2.4"}], ",", " ", "2."}], "}"}]}]}], ",", 
+     RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"g4", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gg", ",", 
+     RowBox[{"ViewPoint", "\[Rule]", 
+      RowBox[{"2.5", "*", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", 
+         RowBox[{"-", "2"}], ",", " ", "2"}], "}"}]}]}], ",", 
+     RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<Fractal_Tetrahedrons_in_an_Gyrobifastigium\.10_grid.jpg\>\"", ",", 
+   RowBox[{"GraphicsGrid", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"gg", ",", "g2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"g3", ",", "g4"}], "}"}]}], "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"4000", ",", "4000"}], "}"}]}]}], "]"}]}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"(*", "end", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.9400809118096247`*^9, 3.940080915735211*^9}, {
+  3.940081819317988*^9, 3.940081877478952*^9}, {3.940082807197102*^9, 
+  3.940082881924987*^9}},
+ CellLabel->"In[28]:=",
+ CellID->1236321300,ExpressionUUID->"ef393c6c-85af-4971-83bf-cebd190a969b"],
+
+Cell[BoxData["\<\"Fractal_Tetrahedrons_in_an_Gyrobifastigium\.10_grid.jpg\"\>\
+"], "Output",
+ CellChangeTimes->{3.940082132628484*^9, 3.940082335262382*^9, 
+  3.940082685326027*^9, 3.940083037385717*^9},
+ CellLabel->"Out[31]=",
+ CellID->676199225,ExpressionUUID->"3727b08f-8eaa-47eb-8dd5-bb2cd324c281"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{934, 755},
+WindowMargins->{{61, Automatic}, {79, Automatic}},
+Visible->True,
+DockedCells->{
+  Cell[
+   TextData[{
+     StyleBox["WOLFRAM", 
+      RGBColor[0.827451, 0.2, 0.121569]], 
+     StyleBox[
+     "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]DEMONSTRATIONS \
+PROJECT", FontColor -> RGBColor[0.827451, 0.2, 0.121569]]}], 
+   "dockedCellImage", CellFrameColor -> RGBColor[0.8, 0.8, 0.8], 
+   CellFrame -> {{0, 0}, {0, 1}}, ShowCellBracket -> False, 
+   CellFrameMargins -> {{20, 0}, {8, 8}}, FontSize -> 16, FontFamily -> 
+   "Source Sans Pro", FontColor -> GrayLevel[1], Background -> 
+   RGBColor[0.9, 0.9, 0.9]]},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->Notebook[{
+   Cell[
+    CellGroupData[{
+      Cell["Style Definitions for Demonstrations", "Title"], 
+      Cell[
+       StyleData[StyleDefinitions -> "Core.nb"]], 
+      Cell[
+       CellGroupData[{
+         Cell["Style Environment Names", "Section"], 
+         Cell[
+          StyleData[All, "Working"], 
+          CellBracketOptions -> {
+           "Color" -> RGBColor[0.269993, 0.308507, 0.6]}, ShowAutoStyles -> 
+          False, ScriptMinSize -> 9, MenuSortingValue -> 1100]}, Open]], 
+      Cell[
+       CellGroupData[{
+         Cell["Notebook Options", "Section"], 
+         Cell[
+         "  The options defined for the style below will be used at the \
+Notebook level.  ", "Text"], 
+         Cell[
+          StyleData["Notebook"], AutoGeneratedPackage -> None, 
+          PageHeaders -> {{
+             Cell[
+              TextData[{
+                CounterBox["Page"]}], "PageNumber"], None, 
+             Cell[
+              
+              TextData[{
+               "Printed from the Complete Wolfram Language Documentation"}], 
+              "PageHeader"]}, {
+             Cell[
+              
+              TextData[{
+               "Printed from the Complete Wolfram Language Documentation"}], 
+              "PageHeader"], None, 
+             Cell[
+              TextData[{
+                CounterBox["Page"]}], "PageNumber"]}}, PageFooters -> {{None, 
+             Cell[
+              TextData[{"\[Copyright]1988-", 
+                ValueBox["$CopyrightYear"], 
+                " Wolfram Research, Inc. All rights reserved."}], 
+              "PageFooter"], None}, {None, 
+             Cell[
+              TextData[{"\[Copyright]1988-", 
+                ValueBox["$CopyrightYear"], 
+                " Wolfram Research, Inc. All rights reserved."}], 
+              "PageFooter"], None}}, PageHeaderLines -> {True, True}, 
+          PageFooterLines -> {True, True}, 
+          PrintingOptions -> {"FacingPages" -> True}, ShowCellBracket -> True,
+           CreateCellID -> True, CellContext -> Notebook, 
+          CellFrameLabelMargins -> 6, DefaultNewInlineCellStyle -> 
+          "InlineMath", DefaultInlineFormatType -> 
+          "DefaultTextInlineFormatType", 
+          InputAliases -> {"intt" -> RowBox[{"\[Integral]", 
+               RowBox[{"\[SelectionPlaceholder]", 
+                 RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+            RowBox[{
+               SubsuperscriptBox[
+               "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+               RowBox[{"\[Placeholder]", 
+                 RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> 
+            RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+                "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+               UnderoverscriptBox["\[Product]", 
+                RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+                "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+               SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+               "\[SelectionPlaceholder]"}], "ls" -> "\[LineSeparator]"}, 
+          ShowStringCharacters -> True, CacheGraphics -> False, 
+          StyleMenuListing -> None, 
+          TooltipBoxOptions -> {
+           TooltipDelay -> 0.3}, $CellContext`TrackCellChangeTimes -> 
+          
+          True, $CellContext`DefaultDockedCellStyle -> {}, \
+$CellContext`AutoQuoteCharacters -> {}, $CellContext`PasteAutoQuoteCharacters -> \
+{}]}, Open]], 
+      Cell[
+       CellGroupData[{
+         Cell["Input/Output", "Section"], 
+         Cell[
+         "The cells in this section define styles used for input and output \
+to the kernel.  Be careful when modifying, renaming, or removing these \
+styles, because the front end associates special meanings with these style \
+names.    ", "Text"], 
+         Cell[
+          StyleData["Input"], ShowCellBracket -> True, 
+          CellMargins -> {{66, 4}, {3, 8}}, Evaluatable -> True, 
+          CellGroupingRules -> "InputGrouping", CellHorizontalScrolling -> 
+          True, PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+          CellProlog :> (
+           ControllerLinking`saved = ReplaceAll[ControllerLinking, 
+              Options[Manipulate]]; 
+           SetOptions[Manipulate, ControllerLinking -> True]), CellEpilog :> 
+          SetOptions[
+           Manipulate, ControllerLinking -> ControllerLinking`saved], 
+          CellLabelMargins -> {{14, Inherited}, {Inherited, Inherited}}, 
+          DefaultFormatType -> DefaultInputFormatType, ShowAutoStyles -> True,
+           HyphenationOptions -> {
+           "HyphenationCharacter" -> "\[Continuation]"}, 
+          AutoItalicWords -> {}, LanguageCategory -> "Input", FormatType -> 
+          InputForm, NumberMarks -> True, 
+          LinebreakAdjustments -> {0.8500000000000001, 2, 10, 0, 1}, 
+          MenuSortingValue -> 9000, MenuCommandKey :> "9", FontWeight -> 
+          "Bold"], 
+         Cell[
+          StyleData["Output"], ShowCellBracket -> True, 
+          CellMargins -> {{66, 4}, {6, 4}}, CellEditDuplicate -> True, 
+          CellGroupingRules -> "OutputGrouping", CellHorizontalScrolling -> 
+          True, PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+          GeneratedCell -> True, CellAutoOverwrite -> True, 
+          CellLabelPositioning -> Left, 
+          CellLabelMargins -> {{14, Inherited}, {Inherited, Inherited}}, 
+          DefaultFormatType -> DefaultOutputFormatType, 
+          HyphenationOptions -> {"HyphenationCharacter" -> "\[Continuation]"},
+           AutoItalicWords -> {}, LanguageCategory -> None, FormatType -> 
+          InputForm, ShowStringCharacters -> False, FontColor -> 
+          GrayLevel[
+           0], $CellContext`TextBoxOptions -> {$CellContext`ContentStyle -> {
+             FontSize -> 10}}], 
+         Cell[
+          StyleData["Message"], ShowCellBracket -> True, 
+          CellMargins -> {{66, 4}, {4, 2}}, CellGroupingRules -> 
+          "OutputGrouping", PageBreakWithin -> False, GroupPageBreakWithin -> 
+          False, GeneratedCell -> True, CellAutoOverwrite -> True, 
+          ShowCellLabel -> False, 
+          CellLabelMargins -> {{14, Inherited}, {Inherited, Inherited}}, 
+          DefaultFormatType -> DefaultOutputFormatType, 
+          HyphenationOptions -> {"HyphenationCharacter" -> "\[Continuation]"},
+           AutoItalicWords -> {}, LanguageCategory -> None, FormatType -> 
+          InputForm, ShowStringCharacters -> False, CounterIncrements -> 
+          "Message", StyleMenuListing -> None, FontFamily -> "Helvetica", 
+          FontSize -> 10, FontColor -> 
+          RGBColor[0.6000000000000001, 0.100008, 0.100008]], 
+         Cell[
+          StyleData["Graphics"], ShowCellBracket -> True, 
+          CellMargins -> {{66, 4}, {4, 2}}, CellGroupingRules -> 
+          "GraphicsGrouping", PageBreakWithin -> False, GeneratedCell -> True,
+           CellAutoOverwrite -> True, ShowCellLabel -> False, 
+          DefaultFormatType -> DefaultOutputFormatType, LanguageCategory -> 
+          None, FormatType -> InputForm, ShowStringCharacters -> False, 
+          StyleMenuListing -> None, FontFamily -> "Times", FontSize -> 10, 
+          FontWeight -> "Plain"], 
+         Cell[
+          StyleData["CellLabel"], LanguageCategory -> None, StyleMenuListing -> 
+          None, FontFamily -> "Verdana", FontSize -> 9, FontWeight -> "Plain",
+           FontColor -> 
+          RGBColor[0.269993, 0.30850700000000003`, 0.6000000000000001]], 
+         Cell[
+          StyleData["dockedCellImage"], CellMargins -> 0, StyleMenuListing -> 
+          None]}, Open]], 
+      Cell[
+       CellGroupData[{
+         Cell["Demonstration Page Styles", "Section"], 
+         Cell[
+          StyleData["Title"], Deletable -> False, ShowCellBracket -> False, 
+          CellMargins -> {{0, 0}, {0, 0}}, 
+          CellGroupingRules -> {"SectionGrouping", 20}, 
+          CellFrameMargins -> {{66, 47}, {15, 30}}, StyleMenuListing -> None, 
+          FontFamily -> "Verdana", FontSize -> 24, FontWeight -> "Bold", 
+          FontColor -> RGBColor[0.827451, 0.2, 0.121569], Background -> 
+          RGBColor[0.99999, 0.99999, 0.99999]], 
+         Cell[
+          StyleData["Section"], Editable -> False, Deletable -> False, 
+          PageWidth :> 674, CellMargins -> {{66, 42}, {6, 42}}, 
+          CellElementSpacings -> {"ClosedGroupTopMargin" -> 30}, 
+          CellGroupingRules -> {"SectionGrouping", 30}, 
+          CellFrameLabelMargins -> {{0, 0}, {6, 8}}, StyleMenuListing -> None,
+           FontFamily -> "Verdana", FontSize -> 16, FontWeight -> "Bold", 
+          FontColor -> RGBColor[0.827451, 0.2, 0.121569]], 
+         Cell[
+          StyleData["Text"], Editable -> True, Deletable -> True, CellMargins -> 
+          Dynamic[{{66, 0.35 Part[
+                CurrentValue[
+                 InputNotebook[], WindowSize], 1]}, {6, 12}}], 
+          LineSpacing -> {1, 1.4}, StyleMenuListing -> None, FontFamily -> 
+          "Verdana", FontSize -> 11, FontWeight -> "Plain"]}, Open]]}, 
+     Open]]}, Visible -> False, FrontEndVersion -> 
+  "12.1 for Mac OS X x86 (64-bit) (June 19, 2020)", StyleDefinitions -> 
+  "Default.nb"],
+ExpressionUUID->"e9851f06-3f75-4554-9d68-382cd4c4c2e7"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Title"->{
+  Cell[2342, 72, 198, 3, 76, "Title",ExpressionUUID->"99d509f7-4a0e-4077-b8fd-09d8ad81438d",
+   CellTags->"Title",
+   CellID->1267820797]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Title", 29248, 660}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 236, 4, 27, "Input",ExpressionUUID->"a8f4a16a-9da4-4348-9957-f5c7d5b5595a",
+ CellID->310897011],
+Cell[797, 26, 605, 17, 27, "Input",ExpressionUUID->"038d19e7-ad14-44de-afc9-82c24b592f7a",
+ CellID->1645811604],
+Cell[1405, 45, 531, 12, 47, "Input",ExpressionUUID->"0ec837f3-ae7e-4a3e-b49d-091e63f6636e",
+ CellID->712488240],
+Cell[1939, 59, 378, 9, 27, "Input",ExpressionUUID->"f09bc4ee-2c51-449e-bf51-a6ccc56031ed",
+ CellID->1359042620],
+Cell[CellGroupData[{
+Cell[2342, 72, 198, 3, 76, "Title",ExpressionUUID->"99d509f7-4a0e-4077-b8fd-09d8ad81438d",
+ CellTags->"Title",
+ CellID->1267820797],
+Cell[CellGroupData[{
+Cell[2565, 79, 9181, 193, 340, "Input",ExpressionUUID->"5296c87f-9429-4338-bcd4-c3e6b9468eea",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellID->53475798],
+Cell[11749, 274, 3836, 75, 558, "Output",ExpressionUUID->"157b4059-01e8-4963-9e14-4de0dd61d89a",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellID->847797724]
+}, Open  ]],
+Cell[15600, 352, 227, 5, 33, "Text",ExpressionUUID->"0cb733f3-74b6-4224-835a-5185477b9b58",
+ CellID->1987714847],
+Cell[CellGroupData[{
+Cell[15852, 361, 847, 20, 47, "Input",ExpressionUUID->"06375de0-d4a2-4001-bc3c-63e8eec79927",
+ CellID->229921088],
+Cell[16702, 383, 292, 5, 26, "Output",ExpressionUUID->"6307aa2d-6171-45cd-80f4-6328938a7ae8",
+ CellID->1486312326]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17031, 393, 1725, 49, 123, "Input",ExpressionUUID->"ef393c6c-85af-4971-83bf-cebd190a969b",
+ CellID->1236321300],
+Cell[18759, 444, 302, 5, 80, "Output",ExpressionUUID->"3727b08f-8eaa-47eb-8dd5-bb2cd324c281",
+ CellID->676199225]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
