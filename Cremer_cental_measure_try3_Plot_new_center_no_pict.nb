@@ -1,0 +1,4158 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    181687,       4150]
+NotebookOptionsPosition[    153431,       3832]
+NotebookOutlinePosition[    153828,       3848]
+CellTagsIndexPosition[    153785,       3845]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"new", " ", "center"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.957113064387755*^9, 3.957113072050565*^9}, {
+  3.957114431445966*^9, 3.957114435983109*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"a7637ab3-05eb-45ac-b8e1-45eb89cc8f82"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"0.20883111605820498`", "\[VeryThinSpace]", "+", 
+     RowBox[{"0.5392785270262042`", " ", "\[ImaginaryI]"}]}], ")"}], "+", 
+   SuperscriptBox["z", "2"]}]}]], "Input",
+ CellChangeTimes->{3.957114424241851*^9},
+ CellLabel->"In[20]:=",ExpressionUUID->"400a3dca-6e3f-4716-b8ae-256ff1072f2c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"0.20883111605820498`", "\[VeryThinSpace]", "+", 
+    RowBox[{"0.5392785270262042`", " ", "\[ImaginaryI]"}]}], ")"}], "+", 
+  SuperscriptBox["z", "2"]}]], "Output",
+ CellChangeTimes->{3.957162277084073*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"8d654290-c915-48c3-9ad6-b5d6c3212108"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", "=", 
+   RowBox[{"JuliaSetPoints", "[", 
+    RowBox[{
+     RowBox[{"f", "[", "z", "]"}], ",", "z"}], 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"\"\<ClosenessTolerance\>\"", "\[Rule]", "0.001"}], "]"}], 
+     "*)"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.957112856469034*^9, 3.957112861628869*^9}, {
+  3.95711301763736*^9, 3.957113018173317*^9}, {3.957113058715786*^9, 
+  3.957113059099506*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"7c51dcd7-96f1-41ab-8139-3a96d5e0413a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "v", "]"}]], "Input",
+ CellChangeTimes->{{3.9571130225531073`*^9, 3.957113026756731*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"a2a4b22b-bea6-470c-9c5e-6469ada90865"],
+
+Cell[BoxData["36690"], "Output",
+ CellChangeTimes->{3.9571131756168747`*^9, 3.957114685606133*^9, 
+  3.9571619738258142`*^9, 3.957162282823472*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"b1cb71b9-d9cd-4ec6-a02a-930d95c13196"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v0", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"Norm", "[", 
+      RowBox[{"v", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "v", "]"}]}], "}"}]}], "]"}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.957161877742268*^9, 3.957161929413851*^9}, 
+   3.957162011595851*^9},
+ CellLabel->"In[23]:=",ExpressionUUID->"5ded9910-e3e5-4108-8af7-7ca0fa44a870"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rave", "=", 
+  RowBox[{
+   RowBox[{"Apply", "[", 
+    RowBox[{"Plus", ",", "v0"}], "]"}], "/", 
+   RowBox[{"Length", "[", "v0", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.957112883437405*^9, 3.957112883447654*^9}, {
+  3.9571619420462313`*^9, 3.957161949215496*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"2c031ff8-71bf-4c86-958d-f5fcff910bb7"],
+
+Cell[BoxData["0.8338603917529446`"], "Output",
+ CellChangeTimes->{3.957161977947857*^9, 3.957162283158298*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"ac57de4b-7723-495d-8f4e-101348ba19ab"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"w", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"x", "/.", 
+      RowBox[{
+       RowBox[{"FindRoot", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Norm", "[", 
+            RowBox[{
+             RowBox[{"v", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "-", "x"}], "]"}], "-", 
+           "rave"}], "==", "0"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "rave"}], "}"}]}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "v", "]"}]}], "}"}]}], "]"}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.95711289925469*^9, 3.957112899259797*^9}, {
+   3.9571129322811317`*^9, 3.957112967392087*^9}, {3.9571130360285*^9, 
+   3.957113037100862*^9}, 3.957113200590981*^9, {3.957113387453444*^9, 
+   3.957113413596768*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"ad88018c-a4b8-4047-91f3-516b7d61555f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285420463*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"41153866-b450-4e5d-8cf6-e22543501625"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622854493847`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"e3752114-2296-479d-9c96-28cce52a90f8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.08400000758117301`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622855208073`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"f5277f8c-dcf5-4e42-ad47-814f122a9f7d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285545183*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"5e709cc0-7ec2-4c59-8880-b09b2306c2cc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.06400000830754143`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285601779*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"f0a4fc26-6465-4482-b49a-791341cab4ca"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285627515*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"f35f9c32-f1f3-40e8-b6fa-e6dd84055d7c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.1160000080754566`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285682987*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"447f69aa-de50-450d-85f8-5980b8669646"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285707994*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"6df9ce02-7d3e-4dfb-bae6-eb9857c5578e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.08200000531807641`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228575583*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"4d82ca09-1eb5-4c96-86fb-26ab4633cb4d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.06000001116948787`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285779264*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"167d121e-3f51-4829-8e98-0a2891a35d95"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.10600000722718672`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285826223*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"6cffd59b-2f4e-43c4-b98f-7be8e9690607"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285850293*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"6687f527-abb8-46ca-b553-abadc2f23c78"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.07800000714302574`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285896223*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"5a8fe935-a6b9-44a1-90a2-affa93a514fa"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.058000010562292925`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622859210463`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"e6b58ec7-9d13-4d74-a1f4-a0c7054d7c7f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622859674463`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"45834db2-7b80-44ce-aff6-3883f9526142"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162285991376*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"711bfaab-ba49-4c9c-9de9-b2db5fbe4dbf"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286040793*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"0f59e750-f3b3-459c-b587-bf083f2057ff"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.05200000790569813`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622860652647`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"bd58b914-0394-4ef3-9d3c-388b432a5661"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.026000009277708236`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622861126423`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"aba0c0f2-586e-4900-8823-25d9ce50bc16"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286137165*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"a8da4eb9-736d-4942-ba9e-1b47036395e9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286184926*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"07c04bdf-b305-4ac7-ace6-7427875e3a60"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622862099133`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"e189f7ad-5329-425c-9e1f-e1f6b4f7feb7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286260078*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"f1a9853c-9b65-45b0-904f-318a1a1222bc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286308866*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"cad10ba1-c405-43b2-b4d2-6b5bcaa41f2d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286333226*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"c226f5b4-b36e-4d31-8a1b-54879d2d6864"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286383585*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"22ad59de-7e32-46ec-a679-5f36800da39b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286408091*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"836c27bc-68ad-4c87-92ea-8ddef9021047"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228661908*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"bf4d6d0a-43e7-4524-b50c-8f36d700ad88"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286643013*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"eb166a48-9bf3-42cf-b604-adee7e4390d1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286688176*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"65500b43-a0f9-47aa-a91f-9ff1f1cb5659"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286711185*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"0f4c4e18-de84-4ed9-8183-8d6ad2c3e3be"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228675613*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"f7365c19-3412-4c2a-86f3-485852df9227"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622867796307`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"92ea9a2d-e138-4c4b-a6ea-18392fc7d4fd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622868274918`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"02b24b9f-0cc6-4710-99d5-71db6e0950c9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286850883*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"b60af843-5eef-4e1b-98d8-9ca517f1800d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.19999998661995944`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286897017*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"7ce76ef5-c86c-44b2-a0df-201b2ea2b903"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162286920212*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"e8c83eaf-b11d-43ed-973d-be5f3a5bea8c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622869679003`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"d1a3d593-8c46-483b-bbb6-cd402fcbb34c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2119999882541824`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287016958*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"3d82f223-a3f7-45eb-b22a-830e38982889"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.19399999263181283`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287041094*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"2706a534-8514-453e-9160-adb3547ba746"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287086285*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"9801aa96-f30f-46b2-adb9-5c6e0290f550"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.17799998957000335`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287109487*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"13781275-b21f-4a68-a111-ec3408014894"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622871580677`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"c04791cd-453a-4167-8dd5-e7a2030351dd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287206793*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"3827436b-e8d8-437d-a4f6-3d5b9f0432e4"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287255183*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"aa68cdbb-9644-46ee-bb1a-b788c5064671"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287279337*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"efcbbf90-601c-43ce-bbaf-c8ee7838edea"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622873267517`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"96af90a1-5537-4c34-ae8e-0f4bd2431952"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287349263*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"223b36d8-c8f7-436b-9434-9d8d47c5760a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622873964*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"dfd05f26-c6af-4a93-ae5e-92127ef0ddc8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287420212*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"06db21fa-81df-485f-b05e-58c8dec81d07"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.16599999153786474`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622875211077`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"7ff9eb37-33d9-476d-924b-5e22ef1dbc71"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287545239*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"8e6386a1-7d1d-4b37-8705-c4e66c8d4ef6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287646865*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"be5d2613-79b4-42ff-894b-56c99579e4f0"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228767061*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"7e68f0e1-2f85-41e9-8f47-8caa5c7f7d6f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287720757*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"b737e0f6-ca6f-4384-87c0-2af9b08de9a0"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622877452707`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"dfc3b983-04e7-4e68-8187-ad7d9acb43dc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622877907763`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"63e2aafa-12c7-4516-8669-5896a980f5b7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287814251*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d5898e0d-ad17-4c78-a948-f404df8b2261"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287861061*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"bb37faf8-2cb1-4ccf-be07-007af55fc0ab"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.13399999493943993`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287884364*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"cb3a5b8d-e064-4fd5-95aa-7a244b7b2c4d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.15999999201240273`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287931074*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d804cc4b-0dce-4506-a0e1-82d948130ae2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.18599999276687715`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162287954842*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"d7129a01-44a2-4f08-af9d-e5264e299c45"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288004615*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"365835c5-ab48-48fd-847f-1aec2df2902a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.14799999232283131`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288029748*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d8e9d657-d40a-4a83-b1b9-f18574e102b2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288076624*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"a6e6601a-504b-4128-ab54-da2d000486b5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288100523*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c8f15848-2491-45ab-ba83-2ae402340491"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622881479883`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"8e1e808f-f72c-4962-8656-864f16e8e28c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622881715317`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"7fee8b8d-0806-402b-b91a-10a756ca1030"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.20599999448723333`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622882190247`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"a4b31b46-6d7a-41bf-abe9-5bae808c38f8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288242703*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"bdc4e1ba-eaed-4358-8d57-b9a0dcebcdee"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.20199999184606635`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288293296*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"99efe747-f363-4c70-9ee0-8a7a3eabc73e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288317141*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"f94fd904-4b6a-4bee-9141-c177046090f1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622883645678`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"8b6521a0-76cd-463c-a6ed-d2ee8f3ad2ca"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622883885393`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"dd4b53da-476d-47a7-93ce-19ed73442968"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288436327*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"21b30e06-1c50-4151-a883-4b95858520f2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288460479*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"7f36cf13-4b4d-46c3-a552-7afe8c66d963"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288508217*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c08f1237-a074-4a2c-8f61-50be175d96b6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288532435*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"ec79202f-1a83-452d-9832-f79f61fa7a93"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2419999914594625`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622885851927`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"ca045040-d778-48d9-a070-4c4d13b8b18d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1939999923767492`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288608576*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"ff66503b-12cf-4c76-b676-e2576cf42229"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622887059603`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"f2810ca5-4abf-440b-9b69-bf0b90c40e1d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288729989*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"dabd0271-5cef-473e-9177-e86f382ec3cd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288785075*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"87c8dede-9675-47be-840f-7ed337bf5841"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1979999946498302`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622888085814`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"b8348245-1e7c-4bca-a63d-56e6b73248ea"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.21999999246484542`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288856699*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"92fcc21b-26d6-49e2-892f-d453fee31ed3"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.22599998992016718`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228888107*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"00ea0f75-ed20-4eba-84df-d8b9d909f8e1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622889289827`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"2347d05e-6b31-4eef-92ee-10f12a27ca41"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288952217*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"fc3bcc91-6548-4dab-8ebf-d56969b1278f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.22799999042201974`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162288997622*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"5b9205e5-0d6d-4783-a642-9776f26ce315"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228902068*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"bcac6a43-a748-474c-a972-c0d7a4866644"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289068655*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"28e8eac6-f362-4c93-b6d6-e71d7d878633"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622890918703`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"208a18d4-7ce0-4978-98d5-acca479ca9c5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622891397047`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"51fe930f-17a4-46e9-9d6d-1e56f503e37d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289165207*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"17800c0f-876a-4be2-9644-669485588de1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2499999910565521`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289213339*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"89dcf9e8-47e1-4183-8746-c5dec5f890a5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289237296*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"3231660a-80ce-4c2a-a877-62d02c692de7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289283328*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"35bd3ae2-0736-4d2b-9994-3fac51d827af"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289306307*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"6d66b9d9-e0aa-4254-ac40-d0112a3302b1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2519999901196515`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622893526163`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"03e522b2-b6f4-41e1-b845-de2d77e7d312"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289375578*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"dcc37df6-8d83-4545-a759-4074041b9d73"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289421468*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"11844db4-7fb0-492b-8305-d4ca3cd79c14"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622894445763`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"985116ae-d93c-47c9-8654-86cc570df126"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289490348*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"52be21d5-18b1-4f5d-956d-1195549e5092"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228951414*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"448046a8-5ab9-4cd5-b953-6eba1fe65fd5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2699999913976373`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289562221*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"bde53d22-fb69-4664-8e2a-fe5ef011962d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289585882*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"b073ecb7-6e96-481f-a62b-85c95c9bfacd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2799999937549625`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228963805*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"2691782e-5d3e-4b6f-b205-ecbcd88fd23b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.3059999900151325`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289662339*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"38c1c95f-b331-4786-a2d8-f3808b96f582"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.2819999908057321`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622897142963`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"2a6e627e-96e5-4d77-8d23-37dbae24c9d9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.3099999917521409`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289737658*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"49f146f4-5c81-43f1-971d-828132136e3b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.28999999165964974`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289891863*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"4d2d1c6e-9427-46c1-89a9-4a13a75d60cb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.31399999431166853`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716228991564*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d476ad05-a5ba-4f35-ba97-555f0cae45fb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622899634657`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"d312e1cb-c599-41e0-91aa-64bdebfb0baf"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162289986734*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d8b9716d-db65-4284-8d9c-72bafc6d8947"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229098062*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"235405bc-2752-4ae5-a75f-04ec06729440"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291005459*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"8adee4fe-df7f-44a0-8392-0a4c2b042047"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291054689*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"55e9a11c-4276-47f0-a4ea-535e4416a67a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291079504*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"5354b789-1377-453b-9770-8180fdcfbf28"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291129937*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"97c54140-b2a0-4a87-98b5-03aa65986ef8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291154313*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"5ad0ec59-38af-4d9a-82f6-eb066064bedf"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291202795*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"0a3ae5e4-f676-4112-9a75-be5663b69df6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291227786*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"22a1916c-b42d-46ae-b1bd-fed4874ba2f1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.25600000896832636`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291275181*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"9715fba5-d58d-439c-8ee1-e5ba84cc0de8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291299765*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"93cf6373-940d-4c1a-b12a-128c1f11a037"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291347528*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"f193babc-a864-4608-b85b-e405e65b7d2b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.3120000065984004`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291370934*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"88241908-dc3a-4103-b5c7-6be3f67f3e67"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622914161453`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"0372f8ee-d733-4371-81f8-7a4cbc251cc8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622914394712`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"5a963f05-8963-4d4a-a0be-c66a08782484"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291485435*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"39a198e9-1776-42ee-adb5-fb48c894af09"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.30600001054249765`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291508687*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"a7a20f61-3c0e-4ea8-8260-9519de651943"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622915543423`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"7f2c402b-fc11-4a04-b8df-f4f8d5259075"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.28200000967975536`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291578465*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"976d18a0-e641-41d3-a224-af50bc496a47"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.28800000961181993`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291625175*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"df818606-1e63-49c1-a443-e6193b1878e6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291649828*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"ba0ad4d5-66ac-49fd-9cf6-1c79b3cb3747"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291701696*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"a59a5ae0-5769-40e9-8717-b45a8181086a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.26800000985263334`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622917258663`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"74a78271-f4a2-41c5-addc-cd5c357b50c4"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291774024*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"a30d3e2b-d3c8-40a9-94c2-43bc80a678e6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622917982397`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"869bf87e-1606-4472-befe-8270209c835b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622918496447`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"6a60308e-4fa1-4abe-b3d1-9408cc27f3a5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.27200000842828065`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291873283*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"fb30a3ea-c6c0-4769-9e4e-2c930581a529"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162291974091*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"feb400bf-aeb6-4735-8d81-9889b4d345aa"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229199818*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"0edce872-95fd-48c9-b1ac-e95147f9abeb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622920449133`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"cf416997-35d9-4f71-8ffa-98c0948cb776"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292070011*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"4016ca93-d3dc-45c4-844e-3306a12787ef"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292118045*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"05e19ef7-c5d5-47cb-8eed-909cb5f6fd4f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292141643*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"70e1d03c-cbc0-4f65-b2a7-3d33a10204d6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292189557*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"78b09460-e1bc-4b74-bc69-9c46ec7242b7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622922138*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"8619a352-7967-44fa-b1ab-ea61602288c3"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292261141*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"4309fd2c-22f0-45e1-96b2-fd28d4bc1381"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292284943*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"3d589cde-47a9-44f4-92bd-a2a3f060b878"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622923323383`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"f2306906-b5b9-4584-abfe-b7f8273c7633"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622923555107`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"95da5480-d149-47c2-bcb2-22c340c86dc5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.2160000097350511`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292401531*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"5ccb710b-70d1-414e-8693-5ce2fdc0877d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292425076*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"77242d9d-238d-4c30-8c12-e0dba8445528"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292470552*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"e6729eba-99a5-4ab2-bfa7-3a7806e66872"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292493444*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"d24c3a5a-9415-4fe5-97c2-e576c5a9e967"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.2260000076534206`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292539611*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c7aac399-60eb-4723-83af-77f118a84bef"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292563427*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"371dcd88-c588-425d-8e19-b72171ea0880"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.20200001040138033`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292610173*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"7e94765d-6b0d-4b09-8066-1d87aa02493f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.20600000596481338`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292634562*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"185d9248-16f0-42fe-86d3-8288f7602480"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622926838503`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"3ce31d69-b404-48ec-be0a-79231ff825a4"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.2060000075334397`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229270848*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"5c035482-a69f-4011-a112-0b9ac4d86918"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622927617283`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"54843de4-fed7-44a8-a057-a2b42445850e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292785862*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"aeb9ce63-dbdd-4c24-afa0-72f0b576b662"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622928345222`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"4869b724-6286-4419-acaa-5970ce287836"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.18600000952677884`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292859416*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"82520a47-0d14-4f7a-bc71-683013809dfa"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622929109*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"1b115b72-5a12-48fd-8e21-913cd02b9d92"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622929351397`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"d101e024-5055-4a4b-8362-31959abf39cd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162292986237*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"fab6adce-1e62-4a7f-968d-3c33fb5a2004"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622930098963`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"a218aaeb-d438-4f1e-bcdf-59f1051f896f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293064878*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"d829d37c-ddaf-403d-8fd6-6e2b94445ca2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293089099*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"bf62774e-b8c4-44a4-8608-f89db36be2df"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293137107*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"c332afcd-7186-47a1-a5e0-fc6bc31c880c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293160962*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"50da0c03-3db3-4a36-89a7-caea94b97423"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293209203*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"ef29635d-607d-4298-ad00-757d7a8d1b8d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293234188*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"58928dba-8a47-4f00-b1a3-419c58c284aa"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293284328*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"3f89bb33-4fff-4f24-89d2-5de2a54d1735"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622933087606`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"064d86d0-28ff-4212-b5bf-6e03f722f2de"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293357478*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"3abe7978-0f8d-44bd-a9e0-f375558bf178"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622933817797`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"8d1dc588-0462-4ddd-9203-61bba887e268"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229343085*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"c1efdd44-8f7c-45af-aaff-0d6d883c03c8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622934553823`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"45cbd25e-0396-4023-b8c2-a66789542e66"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293505563*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"e2cf8e05-831a-4a8b-ae00-880d488ad6d9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293530086*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"99e69121-6b4e-4408-a47a-8db5409466dd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293578539*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"41e264d7-744e-45d1-9df8-a5b5dcd25f5b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293602586*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"780ec729-05b2-4593-9546-e173292bd6e0"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293649907*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"2a37b610-94f2-4a95-b93f-868c2ab5f62e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293673936*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"859fd073-782c-4095-a605-744988968ebd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293720849*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"b07c0f06-ae39-46dc-9cfa-01c6f3a747fb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.16800001122442382`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229374522*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"66c93ba9-3528-4b79-8430-91310e1914fb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293795925*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"f9e0fce0-f362-432d-9e94-3e7a747c5f53"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293819572*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"044efa1e-e539-4c49-aa30-21084605172b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.1720000064679836`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293867991*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"d910aa40-9598-4a2e-a73b-29aeadcd41f9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.2140000079387115`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293891164*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"5bb44591-fa42-406f-a5b8-d5106e91e39b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293942889*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"e4c52c51-b8fe-4d89-895c-b58595b07784"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162293967411*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"54871cb7-e077-416c-933e-53687b6cd174"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.19400000865395756`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622940178022`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"7eb77cdb-46e7-4504-84c3-5fe9f1757c30"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.22200000745434345`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294041844*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"a1cd746e-05f9-476a-a129-39575e79eb39"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294096924*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"ba2f512a-c83d-49e9-9e34-a7cd74f7566b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622941461077`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"262c3acb-8fc7-492c-8af2-82fc4111995e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294170623*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"0b3d6f43-2fc1-4f6e-ba8d-a7af6362df95"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.21600000484429935`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294218954*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"2d87dc40-74be-46e9-9c2e-6fc31872894a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294242239*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"773e4c97-1538-4acd-b3cd-a834c6c38b94"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294289812*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"ccb4df67-d40f-413e-8f8d-c06554633253"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294313794*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"7fbe9409-3fae-4880-b2cb-50580764dfbe"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622943614273`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"2192c9bd-cc95-4371-b39e-bb9cd813fb6a"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294385695*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"5fd6494f-cc4b-4e52-aa49-492650c12c80"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622944346113`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"3daffdfa-6564-4134-9b1e-fb447cd4453f"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294458432*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"124caea4-a208-41ba-be39-5c82a3b63c78"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.040000009831579794`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294506279*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"1fc88652-b56e-46bf-b345-3f32ae173e2d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622945307407`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"3a60900d-58d8-46c0-bf67-c0ceeec3e0e8"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294578703*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c8c77964-c230-4db1-9c3f-81b18d5f8d32"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622946031847`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"1f6c137e-e5cb-48c2-8b85-c8da8f397a34"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.1540000085468742`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622946540337`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"379da9a7-91f4-4954-ac5f-ad20b4d0e8e3"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294678651*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"fda5f5ca-c99d-495e-8901-9da0c5d44b5e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.03599999423426834`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622947268047`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"da2f3270-a504-4f7c-a6ab-06167b09482c"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.08799999331349319`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294751337*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"ae6f1491-7d52-4a7d-a487-04e6a84891f2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.16800001401375747`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622948419867`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"0d2847e1-241c-4ad2-b785-b5a2e54a69a1"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294865793*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"557cced1-a559-4c8e-8b9b-75763c61f541"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.0259999933910834`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622949120913`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"95aa6062-403f-407e-8997-c83649ae6cc7"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.12000000941301167`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162294936532*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"8ff75ff6-648f-45c8-a278-f6dc5503c82b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622949863*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"6c116a31-2361-41ed-8750-02b93b97eb23"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295009828*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"48562951-a4da-4be2-9c70-497e06eb356e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.09399999290525916`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622950639477`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"5264da8f-b056-4428-ab35-e40ff0150520"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295088711*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"a9eb8c01-ffa2-43d2-8b15-793da137ce3e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.07399999299142329`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295143791*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"007b9bce-ee00-4e4d-8dd7-d29d28a9ab67"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295168347*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"b9559dcd-f964-4d9c-9ce7-314dc2763237"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622952163773`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"40743c0c-91b6-4fdc-b544-0dcacdcf95fc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295240904*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c85e5c65-6760-46fb-a4cc-f158101ca51d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1039999929357516`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295289217*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"b1f2d8cb-4570-4ae8-a2da-80edeff9065d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622953130913`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"c47f7dee-d24f-4caf-9c7a-e1a186064f94"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622953619337`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"c5c2f7ba-d463-4768-b528-a5c995b34af0"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295387225*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"51d8f585-7efe-4a13-92c2-d69068589eb5"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.10999999160494808`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622954360647`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"951b98dd-1687-4ff5-8a07-915e66cb69be"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622954451838`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"795eb506-c5d4-4cee-9987-b03e8accc607"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229549642*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"823e8bf3-82e3-49c0-ab70-1513735b1302"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229552048*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"4fed1be9-244d-47c1-b161-5a527f9cfd61"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"jsing\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295568431*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"c76dc49b-a92b-438f-8b88-6fe9d88f9826"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622955915117`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"cd3b5bca-e1c8-4e7b-be02-a0cc5e28626e"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295639847*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"0cfc6cc2-077e-4edd-83b9-fc1af218bf2d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"-\\\", \\\"0.08800000428236966`\\\"}], \\\"}\\\"}]\\). Try \
+perturbing the initial point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295663598*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"09bdd360-89d1-4b46-b4d4-1d8fd108c739"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622957118063`*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"5c35a09b-5f27-4180-bbcd-0b95f19206ad"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622957392263`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"9d363300-efc0-4c8f-81aa-aff37f6bfce2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295788563*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"757a92cc-f55a-4767-83dc-c470a4d3f50d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295812429*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"46b2dcc0-d033-42b7-8e90-5b63d00950be"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295900758*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"4e640183-8086-496b-958d-a4fe2ccf4341"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622959261312`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"a24036db-ddf3-419c-8a95-9baefdac5a76"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229597543*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"ee6a31ad-b307-42b4-9fbf-e5420de45dd9"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162295999714*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"bb3ab6e9-0c3a-4b66-b302-c24245564704"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296051938*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"03ce6fe5-7218-4d39-ab40-8a6195629222"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229607612*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"597e6996-2c9f-4c14-86ac-59208a270665"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622961324997`*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"7ecc4b57-4b51-4822-8320-678aef2fd000"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296160296*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"28f40fbe-006d-4f67-bf6f-c36a078e1c43"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296248135*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"b1db608a-3ca4-4d94-8bef-f9e90a704f19"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296276414*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"84cd2d76-e6db-4efa-8a60-c26ed6dbea41"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296325675*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"2c367efe-ad2a-47ba-ba60-9188d8707b2d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1579999938990381`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296349455*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"b0cf7299-750f-4771-8f69-2f62c8405997"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622963987837`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"487eed6d-5c22-434b-a910-3cd68dde3d16"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.10599999534343625`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622964257708`*^9},
+ CellLabel->
+  "(kernel 1)",ExpressionUUID->"8fea87d8-6c0e-4080-900b-c8aa26eac298"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296475264*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"bf56e5b2-c518-41e1-a20b-d0910aa1f569"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296499569*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"9311858e-1a8e-484a-8428-4aca981556c2"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622965510406`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"6c063bcb-ec73-4b44-a3cf-34e532c47b05"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.10399998276273593`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296576936*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"8e9319fe-7d96-4c8b-9f56-7a2e7dd020dd"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296627098*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"26cbe28d-a135-4bb1-a866-9d0df17455fb"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.95716229665154*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"574488d5-0727-45d5-acd5-b2b5c36e9bad"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1679999900378351`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296699464*^9},
+ CellLabel->
+  "(kernel 2)",ExpressionUUID->"fcdcbb95-d1ae-4740-ae98-19722de9e968"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296724305*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"5ddc700c-8f1d-47c3-81fa-28d77ae4d4bc"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], " ", ":", 
+  "  ", "\<\"The line search decreased the step size to within tolerance \
+specified by AccuracyGoal and PrecisionGoal but was unable to find a \
+sufficient decrease in the merit function. You may need more than \
+\\!\\(\\*RowBox[{\\\"MachinePrecision\\\"}]\\) digits of working precision to \
+meet these tolerances.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.9571622967736883`*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"d3dbee51-7d4b-4d59-8af5-1fa22906b096"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296797564*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"0c7996f0-003b-4c8f-b646-82c138c0d88d"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"FindRoot\\\", \\\
+\"::\\\", \\\"lstol\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296844956*^9},
+ CellLabel->
+  "(kernel 4)",ExpressionUUID->"c96ca115-b39b-4538-aae3-8278b4d678be"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "jsing"}], "MessageName"], " ", ":", 
+  "  ", "\<\"Encountered a singular Jacobian at the point \\!\\(\\*RowBox[{\\\
+\"{\\\", \\\"x\\\", \\\"}\\\"}]\\) = \\!\\(\\*RowBox[{\\\"{\\\", \
+\\\"0.1799999924485661`\\\", \\\"}\\\"}]\\). Try perturbing the initial \
+point(s).\"\>"}]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.957162296894094*^9},
+ CellLabel->
+  "(kernel 3)",ExpressionUUID->"31aed641-07d3-4565-a39f-965da562aa78"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", "w", "]"}]], "Input",
+ CellChangeTimes->{{3.957113590293591*^9, 3.9571136224165983`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"71ce5efe-1dd2-4f81-98b3-f0fa40f912c4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"w0", "=", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"Norm", "[", 
+      RowBox[{"w", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "w", "]"}]}], "}"}]}], "]"}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.957162105974362*^9, 3.9571621175982933`*^9}, 
+   3.9571621813105164`*^9, 
+   3.9571624861032553`*^9},ExpressionUUID->"e70a6ce9-5204-4ddf-bc17-\
+a07146a70026"],
+
+Cell[BoxData[
+ TemplateBox[<|"shortenedBoxes" -> TagBox[
+     RowBox[{"{", 
+       RowBox[{
+        "0.2599995430325209`", ",", "0.2580006754880658`", ",", 
+         "0.25599841683428215`", ",", "0.2539993770583508`", ",", 
+         "0.25200157259620365`", ",", "0.2580003559853527`", ",", 
+         "0.25600114868501395`", ",", "0.2540015518256915`", ",", 
+         "0.2519987944154195`", ",", "0.25000076665695226`", ",", 
+         "0.25599985542515225`", ",", "0.2540006894687778`", ",", 
+         TemplateBox[{"36666"}, "OutputSizeLimit`Skeleton"], ",", 
+         "0.24799859210779276`", ",", "0.2459987296207739`", ",", 
+         "0.2580013403881445`", ",", "0.25600018392967033`", ",", 
+         "0.25399939700601504`", ",", "0.25199986390809886`", ",", 
+         "0.24999893598611317`", ",", "0.2599994934190788`", ",", 
+         "0.2580005280761586`", ",", "0.25599849178662354`", ",", 
+         "0.2539991749408023`", ",", "0.2520004624893112`"}], "}"}], 
+     Short[#, 8]& ], "line" -> 27, "sessionID" -> 25558053908039354817, 
+   "byteCount" -> 293720, "size" -> 8, "stored" -> False, "expr" -> 
+   Missing["NotStored"], "wrap" -> OutputSizeLimit`Defer, "version" -> 1|>,
+  "OutputSizeLimitTemplate"]], "Output",
+ CellChangeTimes->{3.957162297844618*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"43e68d94-44f3-4648-a3dd-e467e1e12969"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cremer", "=", 
+  RowBox[{
+   RowBox[{"Apply", "[", 
+    RowBox[{"Plus", ",", "w0"}], "]"}], "/", 
+   RowBox[{"Length", "[", "w0", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9571129924950943`*^9, 3.957113006958107*^9}, {
+   3.957162125680315*^9, 3.9571621389340363`*^9}, 3.957162200462901*^9},
+ CellLabel->"In[28]:=",ExpressionUUID->"e2cf0a5a-93b5-47a0-b5f6-c7350671850f"],
+
+Cell[BoxData["0.3672941015237657`"], "Output",
+ CellChangeTimes->{
+  3.957113347955454*^9, 3.957113458026103*^9, 3.957114702586781*^9, {
+   3.957162149353629*^9, 3.957162159029777*^9}, 3.957162203660874*^9, 
+   3.9571622979408073`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"d66dcbe3-470f-4885-b0f3-056ba5f25c56"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cremer", "/", "rave"}]], "Input",
+ CellLabel->"In[29]:=",ExpressionUUID->"c229d869-03ea-4d06-83ff-708b108d1889"],
+
+Cell[BoxData["0.4274014247468739`"], "Output",
+ CellChangeTimes->{
+  3.957114702627639*^9, {3.957162149362804*^9, 3.957162159038599*^9}, 
+   3.957162210722371*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"6955693b-81af-4330-8693-9909103601f7"],
+
+Cell[BoxData["0.44047433498027`"], "Output",
+ CellChangeTimes->{3.957162297949524*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"a41b9915-476d-44e9-9a64-738e252ea6a6"]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{139, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Mac OS X x86 (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"90743ac3-c72c-462d-93a8-7236c282c1bd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 275, 5, 30, "Input",ExpressionUUID->"a7637ab3-05eb-45ac-b8e1-45eb89cc8f82"],
+Cell[CellGroupData[{
+Cell[858, 29, 391, 9, 30, "Input",ExpressionUUID->"400a3dca-6e3f-4716-b8ae-256ff1072f2c"],
+Cell[1252, 40, 336, 7, 34, "Output",ExpressionUUID->"8d654290-c915-48c3-9ad6-b5d6c3212108"]
+}, Open  ]],
+Cell[1603, 50, 528, 13, 30, "Input",ExpressionUUID->"7c51dcd7-96f1-41ab-8139-3a96d5e0413a"],
+Cell[CellGroupData[{
+Cell[2156, 67, 206, 3, 30, "Input",ExpressionUUID->"a2a4b22b-bea6-470c-9c5e-6469ada90865"],
+Cell[2365, 72, 226, 3, 34, "Output",ExpressionUUID->"b1cb71b9-d9cd-4ec6-a02a-930d95c13196"]
+}, Open  ]],
+Cell[2606, 78, 492, 14, 30, "Input",ExpressionUUID->"5ded9910-e3e5-4108-8af7-7ca0fa44a870"],
+Cell[CellGroupData[{
+Cell[3123, 96, 368, 8, 30, "Input",ExpressionUUID->"2c031ff8-71bf-4c86-958d-f5fcff910bb7"],
+Cell[3494, 106, 189, 2, 34, "Output",ExpressionUUID->"ac57de4b-7723-495d-8f4e-101348ba19ab"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3720, 113, 986, 27, 30, "Input",ExpressionUUID->"ad88018c-a4b8-4047-91f3-516b7d61555f"],
+Cell[CellGroupData[{
+Cell[4731, 144, 442, 10, 24, "Print",ExpressionUUID->"41153866-b450-4e5d-8cf6-e22543501625"],
+Cell[5176, 156, 587, 12, 82, "Print",ExpressionUUID->"e3752114-2296-479d-9c96-28cce52a90f8"],
+Cell[5766, 170, 522, 11, 44, "Print",ExpressionUUID->"f5277f8c-dcf5-4e42-ad47-814f122a9f7d"],
+Cell[6291, 183, 585, 12, 82, "Print",ExpressionUUID->"5e709cc0-7ec2-4c59-8880-b09b2306c2cc"],
+Cell[6879, 197, 520, 11, 44, "Print",ExpressionUUID->"f0a4fc26-6465-4482-b49a-791341cab4ca"],
+Cell[7402, 210, 442, 10, 24, "Print",ExpressionUUID->"f35f9c32-f1f3-40e8-b6fa-e6dd84055d7c"],
+Cell[7847, 222, 519, 11, 44, "Print",ExpressionUUID->"447f69aa-de50-450d-85f8-5980b8669646"],
+Cell[8369, 235, 585, 12, 82, "Print",ExpressionUUID->"6df9ce02-7d3e-4dfb-bae6-eb9857c5578e"],
+Cell[8957, 249, 519, 11, 44, "Print",ExpressionUUID->"4d82ca09-1eb5-4c96-86fb-26ab4633cb4d"],
+Cell[9479, 262, 520, 11, 44, "Print",ExpressionUUID->"167d121e-3f51-4829-8e98-0a2891a35d95"],
+Cell[10002, 275, 520, 11, 44, "Print",ExpressionUUID->"6cffd59b-2f4e-43c4-b98f-7be8e9690607"],
+Cell[10525, 288, 585, 12, 82, "Print",ExpressionUUID->"6687f527-abb8-46ca-b553-abadc2f23c78"],
+Cell[11113, 302, 520, 11, 44, "Print",ExpressionUUID->"5a8fe935-a6b9-44a1-90a2-affa93a514fa"],
+Cell[11636, 315, 523, 11, 44, "Print",ExpressionUUID->"e6b58ec7-9d13-4d74-a1f4-a0c7054d7c7f"],
+Cell[12162, 328, 444, 10, 24, "Print",ExpressionUUID->"45834db2-7b80-44ce-aff6-3883f9526142"],
+Cell[12609, 340, 442, 10, 24, "Print",ExpressionUUID->"711bfaab-ba49-4c9c-9de9-b2db5fbe4dbf"],
+Cell[13054, 352, 442, 10, 24, "Print",ExpressionUUID->"0f59e750-f3b3-459c-b587-bf083f2057ff"],
+Cell[13499, 364, 522, 11, 44, "Print",ExpressionUUID->"bd58b914-0394-4ef3-9d3c-388b432a5661"],
+Cell[14024, 377, 523, 11, 44, "Print",ExpressionUUID->"aba0c0f2-586e-4900-8823-25d9ce50bc16"],
+Cell[14550, 390, 585, 12, 82, "Print",ExpressionUUID->"a8da4eb9-736d-4942-ba9e-1b47036395e9"],
+Cell[15138, 404, 442, 10, 24, "Print",ExpressionUUID->"07c04bdf-b305-4ac7-ace6-7427875e3a60"],
+Cell[15583, 416, 587, 12, 82, "Print",ExpressionUUID->"e189f7ad-5329-425c-9e1f-e1f6b4f7feb7"],
+Cell[16173, 430, 585, 12, 82, "Print",ExpressionUUID->"f1a9853c-9b65-45b0-904f-318a1a1222bc"],
+Cell[16761, 444, 585, 12, 82, "Print",ExpressionUUID->"cad10ba1-c405-43b2-b4d2-6b5bcaa41f2d"],
+Cell[17349, 458, 585, 12, 82, "Print",ExpressionUUID->"c226f5b4-b36e-4d31-8a1b-54879d2d6864"],
+Cell[17937, 472, 585, 12, 82, "Print",ExpressionUUID->"22ad59de-7e32-46ec-a679-5f36800da39b"],
+Cell[18525, 486, 585, 12, 82, "Print",ExpressionUUID->"836c27bc-68ad-4c87-92ea-8ddef9021047"],
+Cell[19113, 500, 584, 12, 82, "Print",ExpressionUUID->"bf4d6d0a-43e7-4524-b50c-8f36d700ad88"],
+Cell[19700, 514, 585, 12, 82, "Print",ExpressionUUID->"eb166a48-9bf3-42cf-b604-adee7e4390d1"],
+Cell[20288, 528, 585, 12, 82, "Print",ExpressionUUID->"65500b43-a0f9-47aa-a91f-9ff1f1cb5659"],
+Cell[20876, 542, 442, 10, 24, "Print",ExpressionUUID->"0f4c4e18-de84-4ed9-8183-8d6ad2c3e3be"],
+Cell[21321, 554, 584, 12, 82, "Print",ExpressionUUID->"f7365c19-3412-4c2a-86f3-485852df9227"],
+Cell[21908, 568, 444, 10, 24, "Print",ExpressionUUID->"92ea9a2d-e138-4c4b-a6ea-18392fc7d4fd"],
+Cell[22355, 580, 587, 12, 82, "Print",ExpressionUUID->"02b24b9f-0cc6-4710-99d5-71db6e0950c9"],
+Cell[22945, 594, 442, 10, 24, "Print",ExpressionUUID->"b60af843-5eef-4e1b-98d8-9ca517f1800d"],
+Cell[23390, 606, 499, 11, 44, "Print",ExpressionUUID->"7ce76ef5-c86c-44b2-a0df-201b2ea2b903"],
+Cell[23892, 619, 585, 12, 82, "Print",ExpressionUUID->"e8c83eaf-b11d-43ed-973d-be5f3a5bea8c"],
+Cell[24480, 633, 444, 10, 24, "Print",ExpressionUUID->"d1a3d593-8c46-483b-bbb6-cd402fcbb34c"],
+Cell[24927, 645, 498, 11, 44, "Print",ExpressionUUID->"3d82f223-a3f7-45eb-b22a-830e38982889"],
+Cell[25428, 658, 499, 11, 44, "Print",ExpressionUUID->"2706a534-8514-453e-9160-adb3547ba746"],
+Cell[25930, 671, 585, 12, 82, "Print",ExpressionUUID->"9801aa96-f30f-46b2-adb9-5c6e0290f550"],
+Cell[26518, 685, 499, 11, 44, "Print",ExpressionUUID->"13781275-b21f-4a68-a111-ec3408014894"],
+Cell[27020, 698, 587, 12, 82, "Print",ExpressionUUID->"c04791cd-453a-4167-8dd5-e7a2030351dd"],
+Cell[27610, 712, 585, 12, 82, "Print",ExpressionUUID->"3827436b-e8d8-437d-a4f6-3d5b9f0432e4"],
+Cell[28198, 726, 585, 12, 82, "Print",ExpressionUUID->"aa68cdbb-9644-46ee-bb1a-b788c5064671"],
+Cell[28786, 740, 585, 12, 82, "Print",ExpressionUUID->"efcbbf90-601c-43ce-bbaf-c8ee7838edea"],
+Cell[29374, 754, 444, 10, 24, "Print",ExpressionUUID->"96af90a1-5537-4c34-ae8e-0f4bd2431952"],
+Cell[29821, 766, 585, 12, 82, "Print",ExpressionUUID->"223b36d8-c8f7-436b-9434-9d8d47c5760a"],
+Cell[30409, 780, 583, 12, 82, "Print",ExpressionUUID->"dfd05f26-c6af-4a93-ae5e-92127ef0ddc8"],
+Cell[30995, 794, 585, 12, 82, "Print",ExpressionUUID->"06db21fa-81df-485f-b05e-58c8dec81d07"],
+Cell[31583, 808, 501, 11, 44, "Print",ExpressionUUID->"7ff9eb37-33d9-476d-924b-5e22ef1dbc71"],
+Cell[32087, 821, 585, 12, 82, "Print",ExpressionUUID->"8e6386a1-7d1d-4b37-8705-c4e66c8d4ef6"],
+Cell[32675, 835, 585, 12, 82, "Print",ExpressionUUID->"be5d2613-79b4-42ff-894b-56c99579e4f0"],
+Cell[33263, 849, 584, 12, 82, "Print",ExpressionUUID->"7e68f0e1-2f85-41e9-8f47-8caa5c7f7d6f"],
+Cell[33850, 863, 585, 12, 82, "Print",ExpressionUUID->"b737e0f6-ca6f-4384-87c0-2af9b08de9a0"],
+Cell[34438, 877, 444, 10, 24, "Print",ExpressionUUID->"dfc3b983-04e7-4e68-8187-ad7d9acb43dc"],
+Cell[34885, 889, 444, 10, 24, "Print",ExpressionUUID->"63e2aafa-12c7-4516-8669-5896a980f5b7"],
+Cell[35332, 901, 442, 10, 24, "Print",ExpressionUUID->"d5898e0d-ad17-4c78-a948-f404df8b2261"],
+Cell[35777, 913, 585, 12, 82, "Print",ExpressionUUID->"bb37faf8-2cb1-4ccf-be07-007af55fc0ab"],
+Cell[36365, 927, 499, 11, 44, "Print",ExpressionUUID->"cb3a5b8d-e064-4fd5-95aa-7a244b7b2c4d"],
+Cell[36867, 940, 499, 11, 44, "Print",ExpressionUUID->"d804cc4b-0dce-4506-a0e1-82d948130ae2"],
+Cell[37369, 953, 499, 11, 44, "Print",ExpressionUUID->"d7129a01-44a2-4f08-af9d-e5264e299c45"],
+Cell[37871, 966, 585, 12, 82, "Print",ExpressionUUID->"365835c5-ab48-48fd-847f-1aec2df2902a"],
+Cell[38459, 980, 499, 11, 44, "Print",ExpressionUUID->"d8e9d657-d40a-4a83-b1b9-f18574e102b2"],
+Cell[38961, 993, 585, 12, 82, "Print",ExpressionUUID->"a6e6601a-504b-4128-ab54-da2d000486b5"],
+Cell[39549, 1007, 585, 12, 82, "Print",ExpressionUUID->"c8f15848-2491-45ab-ba83-2ae402340491"],
+Cell[40137, 1021, 444, 10, 24, "Print",ExpressionUUID->"8e1e808f-f72c-4962-8656-864f16e8e28c"],
+Cell[40584, 1033, 587, 12, 82, "Print",ExpressionUUID->"7fee8b8d-0806-402b-b91a-10a756ca1030"],
+Cell[41174, 1047, 501, 11, 44, "Print",ExpressionUUID->"a4b31b46-6d7a-41bf-abe9-5bae808c38f8"],
+Cell[41678, 1060, 585, 12, 82, "Print",ExpressionUUID->"bdc4e1ba-eaed-4358-8d57-b9a0dcebcdee"],
+Cell[42266, 1074, 499, 11, 44, "Print",ExpressionUUID->"99efe747-f363-4c70-9ee0-8a7a3eabc73e"],
+Cell[42768, 1087, 585, 12, 82, "Print",ExpressionUUID->"f94fd904-4b6a-4bee-9141-c177046090f1"],
+Cell[43356, 1101, 587, 12, 82, "Print",ExpressionUUID->"8b6521a0-76cd-463c-a6ed-d2ee8f3ad2ca"],
+Cell[43946, 1115, 587, 12, 82, "Print",ExpressionUUID->"dd4b53da-476d-47a7-93ce-19ed73442968"],
+Cell[44536, 1129, 585, 12, 82, "Print",ExpressionUUID->"21b30e06-1c50-4151-a883-4b95858520f2"],
+Cell[45124, 1143, 442, 10, 24, "Print",ExpressionUUID->"7f36cf13-4b4d-46c3-a552-7afe8c66d963"],
+Cell[45569, 1155, 585, 12, 82, "Print",ExpressionUUID->"c08f1237-a074-4a2c-8f61-50be175d96b6"],
+Cell[46157, 1169, 585, 12, 82, "Print",ExpressionUUID->"ec79202f-1a83-452d-9832-f79f61fa7a93"],
+Cell[46745, 1183, 500, 11, 44, "Print",ExpressionUUID->"ca045040-d778-48d9-a070-4c4d13b8b18d"],
+Cell[47248, 1196, 498, 11, 44, "Print",ExpressionUUID->"ff66503b-12cf-4c76-b676-e2576cf42229"],
+Cell[47749, 1209, 444, 10, 24, "Print",ExpressionUUID->"f2810ca5-4abf-440b-9b69-bf0b90c40e1d"],
+Cell[48196, 1221, 442, 10, 24, "Print",ExpressionUUID->"dabd0271-5cef-473e-9177-e86f382ec3cd"],
+Cell[48641, 1233, 585, 12, 82, "Print",ExpressionUUID->"87c8dede-9675-47be-840f-7ed337bf5841"],
+Cell[49229, 1247, 500, 11, 44, "Print",ExpressionUUID->"b8348245-1e7c-4bca-a63d-56e6b73248ea"],
+Cell[49732, 1260, 499, 11, 44, "Print",ExpressionUUID->"92fcc21b-26d6-49e2-892f-d453fee31ed3"],
+Cell[50234, 1273, 498, 11, 44, "Print",ExpressionUUID->"00ea0f75-ed20-4eba-84df-d8b9d909f8e1"],
+Cell[50735, 1286, 587, 12, 82, "Print",ExpressionUUID->"2347d05e-6b31-4eef-92ee-10f12a27ca41"],
+Cell[51325, 1300, 442, 10, 24, "Print",ExpressionUUID->"fc3bcc91-6548-4dab-8ebf-d56969b1278f"],
+Cell[51770, 1312, 499, 11, 44, "Print",ExpressionUUID->"5b9205e5-0d6d-4783-a642-9776f26ce315"],
+Cell[52272, 1325, 584, 12, 82, "Print",ExpressionUUID->"bcac6a43-a748-474c-a972-c0d7a4866644"],
+Cell[52859, 1339, 442, 10, 24, "Print",ExpressionUUID->"28e8eac6-f362-4c93-b6d6-e71d7d878633"],
+Cell[53304, 1351, 587, 12, 82, "Print",ExpressionUUID->"208a18d4-7ce0-4978-98d5-acca479ca9c5"],
+Cell[53894, 1365, 587, 12, 82, "Print",ExpressionUUID->"51fe930f-17a4-46e9-9d6d-1e56f503e37d"],
+Cell[54484, 1379, 585, 12, 82, "Print",ExpressionUUID->"17800c0f-876a-4be2-9644-669485588de1"],
+Cell[55072, 1393, 498, 11, 44, "Print",ExpressionUUID->"89dcf9e8-47e1-4183-8746-c5dec5f890a5"],
+Cell[55573, 1406, 585, 12, 82, "Print",ExpressionUUID->"3231660a-80ce-4c2a-a877-62d02c692de7"],
+Cell[56161, 1420, 585, 12, 82, "Print",ExpressionUUID->"35bd3ae2-0736-4d2b-9994-3fac51d827af"],
+Cell[56749, 1434, 585, 12, 82, "Print",ExpressionUUID->"6d66b9d9-e0aa-4254-ac40-d0112a3302b1"],
+Cell[57337, 1448, 500, 11, 44, "Print",ExpressionUUID->"03e522b2-b6f4-41e1-b845-de2d77e7d312"],
+Cell[57840, 1461, 585, 12, 82, "Print",ExpressionUUID->"dcc37df6-8d83-4545-a759-4074041b9d73"],
+Cell[58428, 1475, 442, 10, 24, "Print",ExpressionUUID->"11844db4-7fb0-492b-8305-d4ca3cd79c14"],
+Cell[58873, 1487, 587, 12, 82, "Print",ExpressionUUID->"985116ae-d93c-47c9-8654-86cc570df126"],
+Cell[59463, 1501, 442, 10, 24, "Print",ExpressionUUID->"52be21d5-18b1-4f5d-956d-1195549e5092"],
+Cell[59908, 1513, 441, 10, 24, "Print",ExpressionUUID->"448046a8-5ab9-4cd5-b953-6eba1fe65fd5"],
+Cell[60352, 1525, 498, 11, 44, "Print",ExpressionUUID->"bde53d22-fb69-4664-8e2a-fe5ef011962d"],
+Cell[60853, 1538, 442, 10, 24, "Print",ExpressionUUID->"b073ecb7-6e96-481f-a62b-85c95c9bfacd"],
+Cell[61298, 1550, 497, 11, 44, "Print",ExpressionUUID->"2691782e-5d3e-4b6f-b205-ecbcd88fd23b"],
+Cell[61798, 1563, 498, 11, 44, "Print",ExpressionUUID->"38c1c95f-b331-4786-a2d8-f3808b96f582"],
+Cell[62299, 1576, 500, 11, 44, "Print",ExpressionUUID->"2a6e627e-96e5-4d77-8d23-37dbae24c9d9"],
+Cell[62802, 1589, 498, 11, 44, "Print",ExpressionUUID->"49f146f4-5c81-43f1-971d-828132136e3b"],
+Cell[63303, 1602, 499, 11, 44, "Print",ExpressionUUID->"4d2d1c6e-9427-46c1-89a9-4a13a75d60cb"],
+Cell[63805, 1615, 498, 11, 44, "Print",ExpressionUUID->"d476ad05-a5ba-4f35-ba97-555f0cae45fb"],
+Cell[64306, 1628, 444, 10, 24, "Print",ExpressionUUID->"d312e1cb-c599-41e0-91aa-64bdebfb0baf"],
+Cell[64753, 1640, 442, 10, 24, "Print",ExpressionUUID->"d8b9716d-db65-4284-8d9c-72bafc6d8947"],
+Cell[65198, 1652, 584, 12, 82, "Print",ExpressionUUID->"235405bc-2752-4ae5-a75f-04ec06729440"],
+Cell[65785, 1666, 585, 12, 82, "Print",ExpressionUUID->"8adee4fe-df7f-44a0-8392-0a4c2b042047"],
+Cell[66373, 1680, 585, 12, 82, "Print",ExpressionUUID->"55e9a11c-4276-47f0-a4ea-535e4416a67a"],
+Cell[66961, 1694, 585, 12, 82, "Print",ExpressionUUID->"5354b789-1377-453b-9770-8180fdcfbf28"],
+Cell[67549, 1708, 585, 12, 82, "Print",ExpressionUUID->"97c54140-b2a0-4a87-98b5-03aa65986ef8"],
+Cell[68137, 1722, 585, 12, 82, "Print",ExpressionUUID->"5ad0ec59-38af-4d9a-82f6-eb066064bedf"],
+Cell[68725, 1736, 585, 12, 82, "Print",ExpressionUUID->"0a3ae5e4-f676-4112-9a75-be5663b69df6"],
+Cell[69313, 1750, 442, 10, 24, "Print",ExpressionUUID->"22a1916c-b42d-46ae-b1bd-fed4874ba2f1"],
+Cell[69758, 1762, 520, 11, 44, "Print",ExpressionUUID->"9715fba5-d58d-439c-8ee1-e5ba84cc0de8"],
+Cell[70281, 1775, 585, 12, 82, "Print",ExpressionUUID->"93cf6373-940d-4c1a-b12a-128c1f11a037"],
+Cell[70869, 1789, 585, 12, 82, "Print",ExpressionUUID->"f193babc-a864-4608-b85b-e405e65b7d2b"],
+Cell[71457, 1803, 519, 11, 44, "Print",ExpressionUUID->"88241908-dc3a-4103-b5c7-6be3f67f3e67"],
+Cell[71979, 1816, 587, 12, 82, "Print",ExpressionUUID->"0372f8ee-d733-4371-81f8-7a4cbc251cc8"],
+Cell[72569, 1830, 444, 10, 24, "Print",ExpressionUUID->"5a963f05-8963-4d4a-a0be-c66a08782484"],
+Cell[73016, 1842, 442, 10, 24, "Print",ExpressionUUID->"39a198e9-1776-42ee-adb5-fb48c894af09"],
+Cell[73461, 1854, 520, 11, 44, "Print",ExpressionUUID->"a7a20f61-3c0e-4ea8-8260-9519de651943"],
+Cell[73984, 1867, 587, 12, 82, "Print",ExpressionUUID->"7f2c402b-fc11-4a04-b8df-f4f8d5259075"],
+Cell[74574, 1881, 520, 11, 44, "Print",ExpressionUUID->"976d18a0-e641-41d3-a224-af50bc496a47"],
+Cell[75097, 1894, 520, 11, 44, "Print",ExpressionUUID->"df818606-1e63-49c1-a443-e6193b1878e6"],
+Cell[75620, 1907, 585, 12, 82, "Print",ExpressionUUID->"ba0ad4d5-66ac-49fd-9cf6-1c79b3cb3747"],
+Cell[76208, 1921, 585, 12, 82, "Print",ExpressionUUID->"a59a5ae0-5769-40e9-8717-b45a8181086a"],
+Cell[76796, 1935, 522, 11, 44, "Print",ExpressionUUID->"74a78271-f4a2-41c5-addc-cd5c357b50c4"],
+Cell[77321, 1948, 442, 10, 24, "Print",ExpressionUUID->"a30d3e2b-d3c8-40a9-94c2-43bc80a678e6"],
+Cell[77766, 1960, 587, 12, 82, "Print",ExpressionUUID->"869bf87e-1606-4472-befe-8270209c835b"],
+Cell[78356, 1974, 587, 12, 82, "Print",ExpressionUUID->"6a60308e-4fa1-4abe-b3d1-9408cc27f3a5"],
+Cell[78946, 1988, 520, 11, 44, "Print",ExpressionUUID->"fb30a3ea-c6c0-4769-9e4e-2c930581a529"],
+Cell[79469, 2001, 585, 12, 82, "Print",ExpressionUUID->"feb400bf-aeb6-4735-8d81-9889b4d345aa"],
+Cell[80057, 2015, 584, 12, 82, "Print",ExpressionUUID->"0edce872-95fd-48c9-b1ac-e95147f9abeb"],
+Cell[80644, 2029, 444, 10, 24, "Print",ExpressionUUID->"cf416997-35d9-4f71-8ffa-98c0948cb776"],
+Cell[81091, 2041, 585, 12, 82, "Print",ExpressionUUID->"4016ca93-d3dc-45c4-844e-3306a12787ef"],
+Cell[81679, 2055, 585, 12, 82, "Print",ExpressionUUID->"05e19ef7-c5d5-47cb-8eed-909cb5f6fd4f"],
+Cell[82267, 2069, 442, 10, 24, "Print",ExpressionUUID->"70e1d03c-cbc0-4f65-b2a7-3d33a10204d6"],
+Cell[82712, 2081, 585, 12, 82, "Print",ExpressionUUID->"78b09460-e1bc-4b74-bc69-9c46ec7242b7"],
+Cell[83300, 2095, 583, 12, 82, "Print",ExpressionUUID->"8619a352-7967-44fa-b1ab-ea61602288c3"],
+Cell[83886, 2109, 442, 10, 24, "Print",ExpressionUUID->"4309fd2c-22f0-45e1-96b2-fd28d4bc1381"],
+Cell[84331, 2121, 585, 12, 82, "Print",ExpressionUUID->"3d589cde-47a9-44f4-92bd-a2a3f060b878"],
+Cell[84919, 2135, 587, 12, 82, "Print",ExpressionUUID->"f2306906-b5b9-4584-abfe-b7f8273c7633"],
+Cell[85509, 2149, 587, 12, 82, "Print",ExpressionUUID->"95da5480-d149-47c2-bcb2-22c340c86dc5"],
+Cell[86099, 2163, 519, 11, 44, "Print",ExpressionUUID->"5ccb710b-70d1-414e-8693-5ce2fdc0877d"],
+Cell[86621, 2176, 585, 12, 82, "Print",ExpressionUUID->"77242d9d-238d-4c30-8c12-e0dba8445528"],
+Cell[87209, 2190, 585, 12, 82, "Print",ExpressionUUID->"e6729eba-99a5-4ab2-bfa7-3a7806e66872"],
+Cell[87797, 2204, 442, 10, 24, "Print",ExpressionUUID->"d24c3a5a-9415-4fe5-97c2-e576c5a9e967"],
+Cell[88242, 2216, 519, 11, 44, "Print",ExpressionUUID->"c7aac399-60eb-4723-83af-77f118a84bef"],
+Cell[88764, 2229, 442, 10, 24, "Print",ExpressionUUID->"371dcd88-c588-425d-8e19-b72171ea0880"],
+Cell[89209, 2241, 520, 11, 44, "Print",ExpressionUUID->"7e94765d-6b0d-4b09-8066-1d87aa02493f"],
+Cell[89732, 2254, 520, 11, 44, "Print",ExpressionUUID->"185d9248-16f0-42fe-86d3-8288f7602480"],
+Cell[90255, 2267, 587, 12, 82, "Print",ExpressionUUID->"3ce31d69-b404-48ec-be0a-79231ff825a4"],
+Cell[90845, 2281, 518, 11, 44, "Print",ExpressionUUID->"5c035482-a69f-4011-a112-0b9ac4d86918"],
+Cell[91366, 2294, 444, 10, 24, "Print",ExpressionUUID->"54843de4-fed7-44a8-a057-a2b42445850e"],
+Cell[91813, 2306, 585, 12, 82, "Print",ExpressionUUID->"aeb9ce63-dbdd-4c24-afa0-72f0b576b662"],
+Cell[92401, 2320, 587, 12, 82, "Print",ExpressionUUID->"4869b724-6286-4419-acaa-5970ce287836"],
+Cell[92991, 2334, 520, 11, 44, "Print",ExpressionUUID->"82520a47-0d14-4f7a-bc71-683013809dfa"],
+Cell[93514, 2347, 583, 12, 82, "Print",ExpressionUUID->"1b115b72-5a12-48fd-8e21-913cd02b9d92"],
+Cell[94100, 2361, 587, 12, 82, "Print",ExpressionUUID->"d101e024-5055-4a4b-8362-31959abf39cd"],
+Cell[94690, 2375, 585, 12, 82, "Print",ExpressionUUID->"fab6adce-1e62-4a7f-968d-3c33fb5a2004"],
+Cell[95278, 2389, 444, 10, 24, "Print",ExpressionUUID->"a218aaeb-d438-4f1e-bcdf-59f1051f896f"],
+Cell[95725, 2401, 585, 12, 82, "Print",ExpressionUUID->"d829d37c-ddaf-403d-8fd6-6e2b94445ca2"],
+Cell[96313, 2415, 585, 12, 82, "Print",ExpressionUUID->"bf62774e-b8c4-44a4-8608-f89db36be2df"],
+Cell[96901, 2429, 442, 10, 24, "Print",ExpressionUUID->"c332afcd-7186-47a1-a5e0-fc6bc31c880c"],
+Cell[97346, 2441, 442, 10, 24, "Print",ExpressionUUID->"50da0c03-3db3-4a36-89a7-caea94b97423"],
+Cell[97791, 2453, 585, 12, 82, "Print",ExpressionUUID->"ef29635d-607d-4298-ad00-757d7a8d1b8d"],
+Cell[98379, 2467, 585, 12, 82, "Print",ExpressionUUID->"58928dba-8a47-4f00-b1a3-419c58c284aa"],
+Cell[98967, 2481, 585, 12, 82, "Print",ExpressionUUID->"3f89bb33-4fff-4f24-89d2-5de2a54d1735"],
+Cell[99555, 2495, 587, 12, 82, "Print",ExpressionUUID->"064d86d0-28ff-4212-b5bf-6e03f722f2de"],
+Cell[100145, 2509, 442, 10, 24, "Print",ExpressionUUID->"3abe7978-0f8d-44bd-a9e0-f375558bf178"],
+Cell[100590, 2521, 587, 12, 82, "Print",ExpressionUUID->"8d1dc588-0462-4ddd-9203-61bba887e268"],
+Cell[101180, 2535, 584, 12, 82, "Print",ExpressionUUID->"c1efdd44-8f7c-45af-aaff-0d6d883c03c8"],
+Cell[101767, 2549, 587, 12, 82, "Print",ExpressionUUID->"45cbd25e-0396-4023-b8c2-a66789542e66"],
+Cell[102357, 2563, 585, 12, 82, "Print",ExpressionUUID->"e2cf8e05-831a-4a8b-ae00-880d488ad6d9"],
+Cell[102945, 2577, 585, 12, 82, "Print",ExpressionUUID->"99e69121-6b4e-4408-a47a-8db5409466dd"],
+Cell[103533, 2591, 585, 12, 82, "Print",ExpressionUUID->"41e264d7-744e-45d1-9df8-a5b5dcd25f5b"],
+Cell[104121, 2605, 442, 10, 24, "Print",ExpressionUUID->"780ec729-05b2-4593-9546-e173292bd6e0"],
+Cell[104566, 2617, 585, 12, 82, "Print",ExpressionUUID->"2a37b610-94f2-4a95-b93f-868c2ab5f62e"],
+Cell[105154, 2631, 585, 12, 82, "Print",ExpressionUUID->"859fd073-782c-4095-a605-744988968ebd"],
+Cell[105742, 2645, 442, 10, 24, "Print",ExpressionUUID->"b07c0f06-ae39-46dc-9cfa-01c6f3a747fb"],
+Cell[106187, 2657, 519, 11, 44, "Print",ExpressionUUID->"66c93ba9-3528-4b79-8430-91310e1914fb"],
+Cell[106709, 2670, 442, 10, 24, "Print",ExpressionUUID->"f9e0fce0-f362-432d-9e94-3e7a747c5f53"],
+Cell[107154, 2682, 585, 12, 82, "Print",ExpressionUUID->"044efa1e-e539-4c49-aa30-21084605172b"],
+Cell[107742, 2696, 519, 11, 44, "Print",ExpressionUUID->"d910aa40-9598-4a2e-a73b-29aeadcd41f9"],
+Cell[108264, 2709, 519, 11, 44, "Print",ExpressionUUID->"5bb44591-fa42-406f-a5b8-d5106e91e39b"],
+Cell[108786, 2722, 585, 12, 82, "Print",ExpressionUUID->"e4c52c51-b8fe-4d89-895c-b58595b07784"],
+Cell[109374, 2736, 442, 10, 24, "Print",ExpressionUUID->"54871cb7-e077-416c-933e-53687b6cd174"],
+Cell[109819, 2748, 522, 11, 44, "Print",ExpressionUUID->"7eb77cdb-46e7-4504-84c3-5fe9f1757c30"],
+Cell[110344, 2761, 520, 11, 44, "Print",ExpressionUUID->"a1cd746e-05f9-476a-a129-39575e79eb39"],
+Cell[110867, 2774, 585, 12, 82, "Print",ExpressionUUID->"ba2f512a-c83d-49e9-9e34-a7cd74f7566b"],
+Cell[111455, 2788, 587, 12, 82, "Print",ExpressionUUID->"262c3acb-8fc7-492c-8af2-82fc4111995e"],
+Cell[112045, 2802, 585, 12, 82, "Print",ExpressionUUID->"0b3d6f43-2fc1-4f6e-ba8d-a7af6362df95"],
+Cell[112633, 2816, 520, 11, 44, "Print",ExpressionUUID->"2d87dc40-74be-46e9-9c2e-6fc31872894a"],
+Cell[113156, 2829, 585, 12, 82, "Print",ExpressionUUID->"773e4c97-1538-4acd-b3cd-a834c6c38b94"],
+Cell[113744, 2843, 585, 12, 82, "Print",ExpressionUUID->"ccb4df67-d40f-413e-8f8d-c06554633253"],
+Cell[114332, 2857, 585, 12, 82, "Print",ExpressionUUID->"7fbe9409-3fae-4880-b2cb-50580764dfbe"],
+Cell[114920, 2871, 444, 10, 24, "Print",ExpressionUUID->"2192c9bd-cc95-4371-b39e-bb9cd813fb6a"],
+Cell[115367, 2883, 442, 10, 24, "Print",ExpressionUUID->"5fd6494f-cc4b-4e52-aa49-492650c12c80"],
+Cell[115812, 2895, 587, 12, 82, "Print",ExpressionUUID->"3daffdfa-6564-4134-9b1e-fb447cd4453f"],
+Cell[116402, 2909, 585, 12, 82, "Print",ExpressionUUID->"124caea4-a208-41ba-be39-5c82a3b63c78"],
+Cell[116990, 2923, 521, 11, 44, "Print",ExpressionUUID->"1fc88652-b56e-46bf-b345-3f32ae173e2d"],
+Cell[117514, 2936, 587, 12, 82, "Print",ExpressionUUID->"3a60900d-58d8-46c0-bf67-c0ceeec3e0e8"],
+Cell[118104, 2950, 442, 10, 24, "Print",ExpressionUUID->"c8c77964-c230-4db1-9c3f-81b18d5f8d32"],
+Cell[118549, 2962, 444, 10, 24, "Print",ExpressionUUID->"1f6c137e-e5cb-48c2-8b85-c8da8f397a34"],
+Cell[118996, 2974, 521, 11, 44, "Print",ExpressionUUID->"379da9a7-91f4-4954-ac5f-ad20b4d0e8e3"],
+Cell[119520, 2987, 585, 12, 82, "Print",ExpressionUUID->"fda5f5ca-c99d-495e-8901-9da0c5d44b5e"],
+Cell[120108, 3001, 501, 11, 44, "Print",ExpressionUUID->"da2f3270-a504-4f7c-a6ab-06167b09482c"],
+Cell[120612, 3014, 499, 11, 44, "Print",ExpressionUUID->"ae6f1491-7d52-4a7d-a487-04e6a84891f2"],
+Cell[121114, 3027, 522, 11, 44, "Print",ExpressionUUID->"0d2847e1-241c-4ad2-b785-b5a2e54a69a1"],
+Cell[121639, 3040, 585, 12, 82, "Print",ExpressionUUID->"557cced1-a559-4c8e-8b9b-75763c61f541"],
+Cell[122227, 3054, 500, 11, 44, "Print",ExpressionUUID->"95aa6062-403f-407e-8997-c83649ae6cc7"],
+Cell[122730, 3067, 520, 11, 44, "Print",ExpressionUUID->"8ff75ff6-648f-45c8-a278-f6dc5503c82b"],
+Cell[123253, 3080, 440, 10, 24, "Print",ExpressionUUID->"6c116a31-2361-41ed-8750-02b93b97eb23"],
+Cell[123696, 3092, 442, 10, 24, "Print",ExpressionUUID->"48562951-a4da-4be2-9c70-497e06eb356e"],
+Cell[124141, 3104, 501, 11, 44, "Print",ExpressionUUID->"5264da8f-b056-4428-ab35-e40ff0150520"],
+Cell[124645, 3117, 585, 12, 82, "Print",ExpressionUUID->"a9eb8c01-ffa2-43d2-8b15-793da137ce3e"],
+Cell[125233, 3131, 499, 11, 44, "Print",ExpressionUUID->"007b9bce-ee00-4e4d-8dd7-d29d28a9ab67"],
+Cell[125735, 3144, 585, 12, 82, "Print",ExpressionUUID->"b9559dcd-f964-4d9c-9ce7-314dc2763237"],
+Cell[126323, 3158, 444, 10, 24, "Print",ExpressionUUID->"40743c0c-91b6-4fdc-b544-0dcacdcf95fc"],
+Cell[126770, 3170, 585, 12, 82, "Print",ExpressionUUID->"c85e5c65-6760-46fb-a4cc-f158101ca51d"],
+Cell[127358, 3184, 498, 11, 44, "Print",ExpressionUUID->"b1f2d8cb-4570-4ae8-a2da-80edeff9065d"],
+Cell[127859, 3197, 587, 12, 82, "Print",ExpressionUUID->"c47f7dee-d24f-4caf-9c7a-e1a186064f94"],
+Cell[128449, 3211, 587, 12, 82, "Print",ExpressionUUID->"c5c2f7ba-d463-4768-b528-a5c995b34af0"],
+Cell[129039, 3225, 585, 12, 82, "Print",ExpressionUUID->"51d8f585-7efe-4a13-92c2-d69068589eb5"],
+Cell[129627, 3239, 501, 11, 44, "Print",ExpressionUUID->"951b98dd-1687-4ff5-8a07-915e66cb69be"],
+Cell[130131, 3252, 587, 12, 82, "Print",ExpressionUUID->"795eb506-c5d4-4cee-9987-b03e8accc607"],
+Cell[130721, 3266, 441, 10, 24, "Print",ExpressionUUID->"823e8bf3-82e3-49c0-ab70-1513735b1302"],
+Cell[131165, 3278, 584, 12, 82, "Print",ExpressionUUID->"4fed1be9-244d-47c1-b161-5a527f9cfd61"],
+Cell[131752, 3292, 442, 10, 24, "Print",ExpressionUUID->"c76dc49b-a92b-438f-8b88-6fe9d88f9826"],
+Cell[132197, 3304, 444, 10, 24, "Print",ExpressionUUID->"cd3b5bca-e1c8-4e7b-be02-a0cc5e28626e"],
+Cell[132644, 3316, 585, 12, 82, "Print",ExpressionUUID->"0cfc6cc2-077e-4edd-83b9-fc1af218bf2d"],
+Cell[133232, 3330, 520, 11, 44, "Print",ExpressionUUID->"09bdd360-89d1-4b46-b4d4-1d8fd108c739"],
+Cell[133755, 3343, 587, 12, 82, "Print",ExpressionUUID->"5c35a09b-5f27-4180-bbcd-0b95f19206ad"],
+Cell[134345, 3357, 587, 12, 82, "Print",ExpressionUUID->"9d363300-efc0-4c8f-81aa-aff37f6bfce2"],
+Cell[134935, 3371, 442, 10, 24, "Print",ExpressionUUID->"757a92cc-f55a-4767-83dc-c470a4d3f50d"],
+Cell[135380, 3383, 585, 12, 82, "Print",ExpressionUUID->"46b2dcc0-d033-42b7-8e90-5b63d00950be"],
+Cell[135968, 3397, 585, 12, 82, "Print",ExpressionUUID->"4e640183-8086-496b-958d-a4fe2ccf4341"],
+Cell[136556, 3411, 587, 12, 82, "Print",ExpressionUUID->"a24036db-ddf3-419c-8a95-9baefdac5a76"],
+Cell[137146, 3425, 584, 12, 82, "Print",ExpressionUUID->"ee6a31ad-b307-42b4-9fbf-e5420de45dd9"],
+Cell[137733, 3439, 585, 12, 82, "Print",ExpressionUUID->"bb3ab6e9-0c3a-4b66-b302-c24245564704"],
+Cell[138321, 3453, 585, 12, 82, "Print",ExpressionUUID->"03ce6fe5-7218-4d39-ab40-8a6195629222"],
+Cell[138909, 3467, 584, 12, 82, "Print",ExpressionUUID->"597e6996-2c9f-4c14-86ac-59208a270665"],
+Cell[139496, 3481, 587, 12, 82, "Print",ExpressionUUID->"7ecc4b57-4b51-4822-8320-678aef2fd000"],
+Cell[140086, 3495, 442, 10, 24, "Print",ExpressionUUID->"28f40fbe-006d-4f67-bf6f-c36a078e1c43"],
+Cell[140531, 3507, 585, 12, 82, "Print",ExpressionUUID->"b1db608a-3ca4-4d94-8bef-f9e90a704f19"],
+Cell[141119, 3521, 442, 10, 24, "Print",ExpressionUUID->"84cd2d76-e6db-4efa-8a60-c26ed6dbea41"],
+Cell[141564, 3533, 585, 12, 82, "Print",ExpressionUUID->"2c367efe-ad2a-47ba-ba60-9188d8707b2d"],
+Cell[142152, 3547, 498, 11, 44, "Print",ExpressionUUID->"b0cf7299-750f-4771-8f69-2f62c8405997"],
+Cell[142653, 3560, 444, 10, 24, "Print",ExpressionUUID->"487eed6d-5c22-434b-a910-3cd68dde3d16"],
+Cell[143100, 3572, 501, 11, 44, "Print",ExpressionUUID->"8fea87d8-6c0e-4080-900b-c8aa26eac298"],
+Cell[143604, 3585, 442, 10, 24, "Print",ExpressionUUID->"bf56e5b2-c518-41e1-a20b-d0910aa1f569"],
+Cell[144049, 3597, 585, 12, 82, "Print",ExpressionUUID->"9311858e-1a8e-484a-8428-4aca981556c2"],
+Cell[144637, 3611, 587, 12, 82, "Print",ExpressionUUID->"6c063bcb-ec73-4b44-a3cf-34e532c47b05"],
+Cell[145227, 3625, 499, 11, 44, "Print",ExpressionUUID->"8e9319fe-7d96-4c8b-9f56-7a2e7dd020dd"],
+Cell[145729, 3638, 585, 12, 82, "Print",ExpressionUUID->"26cbe28d-a135-4bb1-a866-9d0df17455fb"],
+Cell[146317, 3652, 584, 12, 82, "Print",ExpressionUUID->"574488d5-0727-45d5-acd5-b2b5c36e9bad"],
+Cell[146904, 3666, 498, 11, 44, "Print",ExpressionUUID->"fcdcbb95-d1ae-4740-ae98-19722de9e968"],
+Cell[147405, 3679, 585, 12, 82, "Print",ExpressionUUID->"5ddc700c-8f1d-47c3-81fa-28d77ae4d4bc"],
+Cell[147993, 3693, 587, 12, 82, "Print",ExpressionUUID->"d3dbee51-7d4b-4d59-8af5-1fa22906b096"],
+Cell[148583, 3707, 442, 10, 24, "Print",ExpressionUUID->"0c7996f0-003b-4c8f-b646-82c138c0d88d"],
+Cell[149028, 3719, 442, 10, 24, "Print",ExpressionUUID->"c96ca115-b39b-4538-aae3-8278b4d678be"],
+Cell[149473, 3731, 498, 11, 44, "Print",ExpressionUUID->"31aed641-07d3-4565-a39f-965da562aa78"]
+}, Open  ]]
+}, Open  ]],
+Cell[149998, 3746, 208, 3, 30, "Input",ExpressionUUID->"71ce5efe-1dd2-4f81-98b3-f0fa40f912c4"],
+Cell[CellGroupData[{
+Cell[150231, 3753, 502, 15, 30, "Input",ExpressionUUID->"e70a6ce9-5204-4ddf-bc17-a07146a70026"],
+Cell[150736, 3770, 1344, 22, 115, "Output",ExpressionUUID->"43e68d94-44f3-4648-a3dd-e467e1e12969"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[152117, 3797, 395, 8, 30, "Input",ExpressionUUID->"e2cf0a5a-93b5-47a0-b5f6-c7350671850f"],
+Cell[152515, 3807, 314, 5, 34, "Output",ExpressionUUID->"d66dcbe3-470f-4885-b0f3-056ba5f25c56"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[152866, 3817, 136, 2, 30, "Input",ExpressionUUID->"c229d869-03ea-4d06-83ff-708b108d1889"],
+Cell[153005, 3821, 242, 4, 34, "Output",ExpressionUUID->"6955693b-81af-4330-8693-9909103601f7"],
+Cell[153250, 3827, 165, 2, 34, "Output",ExpressionUUID->"a41b9915-476d-44e9-9a64-738e252ea6a6"]
+}, Open  ]]
+}
+]
+*)
+
