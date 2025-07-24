@@ -1,0 +1,348 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11150,        340]
+NotebookOptionsPosition[      9501,        302]
+NotebookOutlinePosition[     10091,        324]
+CellTagsIndexPosition[     10048,        321]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", "Mathematica", "*)"}]], "Input",
+ CellChangeTimes->{{3.962350414344275*^9, 
+  3.9623504263755493`*^9}},ExpressionUUID->"982d9ddd-1797-40a8-8dac-\
+c7d97ec05ee5"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"nz", ",", "f", ",", "g", ",", "arraym", ",", "FractalPure"}], 
+  "]"}]], "Input",
+ CellLabel->"In[6]:=",ExpressionUUID->"c1be56ab-826e-4ec7-8bf8-2f7d7f1474b2"],
+
+Cell[CellGroupData[{
+
+Cell["3D Herman's ring Mandelbrot inverse", "Subsubsection",
+ Evaluatable->False,
+ CellHorizontalScrolling->True,
+ InitializationCell->True,
+ AspectRatioFixed->True,
+ FontFamily->"Courier",
+ FontSize->14,ExpressionUUID->"3da889c9-4e57-4137-bb84-f0c979c0e511"],
+
+Cell["\<\
+(*Mandelbrot with SQRT(x^2+y^2) limited measure*)
+(*by R. L. BAGULA 10Oct 2005 \[Copyright] *)
+numberOfz2ToEscape[z_] := Block[
+\t{escapeCount, nz = N[z],nzold=0},
+\tFor[
+\t\tescapeCount = 0,
+\t\t(Sqrt[Re[nz]^2+Im[nz]^2] < 16) && (escapeCount < 255) && \
+(Abs[nz-nzold]>10^(-3)),
+\t\tnzold=nz;
+\t\tnz =nz^2*(z+nz^2)/(1+z*nz^2);
+\t\t++escapeCount
+\t];
+\tescapeCount*If[(Abs[nz-nzold]>10^(-3)),Abs[ArcTan[nz]+I*ArcTan[nz]*Tan[1]-\
+Arg[z]],Abs[Arg[nz]]]
+]\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.962293958516355*^9, 3.962293972084015*^9}, {
+  3.962294004499013*^9, 3.962294008602974*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,
+ CellLabel->"In[7]:=",ExpressionUUID->"cc7b08db-b847-457e-8332-db20a045af79"],
+
+Cell["\<\
+FractalPure[{{ReMin_, ReMax_, ReSteps_},
+\t\t\t {ImMin_, ImMax_, ImSteps_}}] :=
+\t\tParallelTable[
+\t\t\tnumberOfz2ToEscape[x + y I],
+\t\t\t{y, ImMin, ImMax, (ImMax - ImMin)/ImSteps},
+\t\t\t{x, ReMin, ReMax, (ReMax - ReMin)/ReSteps}
+\t\t
+\t]
+\t\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.962293360115776*^9, 3.962293363699273*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,
+ CellLabel->"In[10]:=",ExpressionUUID->"6db0b10d-164c-4202-8c69-652b8451678b"],
+
+Cell[TextData[{
+ StyleBox["arraym=",
+  AspectRatioFixed->True],
+ StyleBox["FractalPure[{{-6.7001 ,2.3,1000},{-4.5,4.5,1000}}];",
+  AspectRatioFixed->True,
+  FontFamily->"Hoefler Text"]
+}], "Input",
+ CellChangeTimes->{{3.962292890128408*^9, 3.962292897010252*^9}, {
+  3.962292949928516*^9, 3.9622929542404327`*^9}, {3.962293057824684*^9, 
+  3.962293060482491*^9}, {3.962293152786865*^9, 3.962293182281157*^9}, {
+  3.962293248304068*^9, 3.962293282253908*^9}, {3.9622955130331707`*^9, 
+  3.962295527793283*^9}, {3.9623503055364323`*^9, 3.9623503111398163`*^9}},
+ AspectRatioFixed->True,
+ FontSize->14,
+ CellLabel->"In[12]:=",ExpressionUUID->"43eca1a2-a07f-4a01-a124-0a83c644e52f"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   StyleBox["gr",
+    AspectRatioFixed->True,
+    FontFamily->"Hoefler Text"], 
+   StyleBox["=",
+    AspectRatioFixed->True,
+    FontFamily->"Hoefler Text"], 
+   RowBox[{
+    StyleBox["ListPlot3D",
+     AspectRatioFixed->True,
+     FontFamily->"Hoefler Text"], 
+    StyleBox["[",
+     AspectRatioFixed->True,
+     FontFamily->"Hoefler Text"], 
+    RowBox[{
+     StyleBox[
+      RowBox[{
+       StyleBox["Abs",
+        FontFamily->"Courier"], 
+       StyleBox["[",
+        FontFamily->"Hoefler Text"], 
+       StyleBox[
+        RowBox[{"Log", "[", 
+         RowBox[{
+          RowBox[{"1", "/", 
+           RowBox[{"Max", "[", "arraym", "]"}]}], "+", "arraym"}], "]"}],
+        FontFamily->"Courier"], 
+       StyleBox["]",
+        FontFamily->"Courier"]}],
+      AspectRatioFixed->True], 
+     StyleBox[",",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox["\n",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox["                          ",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox[
+      RowBox[{"Mesh", " ", "->", " ", "False"}],
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox[",",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox["\n",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox["\t\t                  ",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox[
+      RowBox[{"AspectRatio", " ", "->", " ", "Automatic"}],
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     StyleBox[",",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     RowBox[{"Boxed", "\[Rule]", "False"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}], 
+     StyleBox[",",
+      AspectRatioFixed->True,
+      FontFamily->"Hoefler Text"], 
+     RowBox[{"ViewPoint", "->", "Top"}], ",", 
+     RowBox[{"ColorFunction", "->", "Hue"}], ",", 
+     RowBox[{"ImageSize", "->", "2000"}]}], 
+    StyleBox["]",
+     AspectRatioFixed->True,
+     FontFamily->"Hoefler Text"]}]}], 
+  StyleBox[";",
+   AspectRatioFixed->True,
+   FontFamily->"Hoefler Text"]}]], "Input",
+ CellChangeTimes->{{3.9622927714532022`*^9, 3.96229278609658*^9}, {
+   3.962292835693013*^9, 3.962292840516768*^9}, 3.962292872123249*^9, {
+   3.9622929587458143`*^9, 3.9622929887200737`*^9}, 3.96229348262388*^9, {
+   3.962293859358425*^9, 3.9622938623729267`*^9}, 3.962295411247424*^9, {
+   3.962296631252821*^9, 3.9622966521853857`*^9}, {3.962297551657056*^9, 
+   3.962297556001553*^9}, 
+   3.962350499736607*^9},ExpressionUUID->"c76e7d1c-0bd7-472f-8417-\
+b00ef7ccbce2"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    StyleBox["g2",
+     FontFamily->"Hoefler Text",
+     FontSize->9], 
+    StyleBox["=",
+     FontFamily->"Hoefler Text",
+     FontSize->9], 
+    RowBox[{
+     StyleBox["ListDensityPlot",
+      FontFamily->"Hoefler Text",
+      FontSize->9], 
+     StyleBox["[",
+      FontFamily->"Hoefler Text",
+      FontSize->9], 
+     RowBox[{
+      RowBox[{"Abs", 
+       StyleBox["[",
+        FontFamily->"Hoefler Text"], 
+       StyleBox[
+        RowBox[{"Log", "[", 
+         RowBox[{
+          RowBox[{"1", "/", 
+           RowBox[{"Max", "[", "arraym", "]"}]}], "+", "arraym"}], "]"}],
+        FontFamily->"Courier"], 
+       StyleBox["]",
+        FontFamily->"Courier"]}], 
+      StyleBox[",",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["\n",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["                          ",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[
+       RowBox[{"Mesh", " ", "->", " ", "False"}],
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[",",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["\n",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["\t\t                  ",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[
+       RowBox[{"AspectRatio", " ", "->", " ", "Automatic"}],
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[",",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["\n",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox["\t\t                 ",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Hue", "[", 
+           RowBox[{"2", "#"}], "]"}], "&"}], ")"}]}],
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[",",
+       FontFamily->"Hoefler Text",
+       FontSize->9], 
+      StyleBox[
+       RowBox[{"ImageSize", "->", "2000"}],
+       FontFamily->"Hoefler Text",
+       FontSize->9], ",", 
+      RowBox[{"Axes", "->", "False"}], ",", 
+      RowBox[{"Frame", "\[Rule]", "False"}]}], 
+     StyleBox["]",
+      FontFamily->"Hoefler Text",
+      FontSize->9]}]}], 
+   StyleBox[";",
+    FontFamily->"Hoefler Text",
+    FontSize->9]}],
+  AspectRatioFixed->True]], "Input",
+ CellChangeTimes->{
+  3.9622928446818933`*^9, {3.962292994466023*^9, 3.962293009656735*^9}, 
+   3.962293493620569*^9, 3.9622936012493258`*^9, {3.962293804230585*^9, 
+   3.962293806118841*^9}, {3.962293842774365*^9, 3.962293844149786*^9}, 
+   3.9622954185596437`*^9},
+ CellLabel->"In[14]:=",ExpressionUUID->"bd0c9d24-e61e-4def-943b-78a72b7bd7e0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<m_1000_herman_rings_renormalization_Out_In.jpg\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"gr", ",", "g2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.962295434364984*^9, 3.9622955013535852`*^9}, 
+   3.962295532857999*^9, 3.962295570135312*^9, 3.962350318527691*^9},
+ CellLabel->"In[15]:=",ExpressionUUID->"daff691c-76ed-41c8-8091-e017e6d1d633"],
+
+Cell[BoxData["\<\"m_1000_herman_rings_renormalization_Out_In.jpg\"\>"], \
+"Output",
+ CellChangeTimes->{3.9623506584471407`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"d9c540d4-45ce-49ed-ad95-f2f4223f9db1"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", "end", "*)"}]], "Input",
+ CellChangeTimes->{{3.9623504391921377`*^9, 
+  3.962350443742992*^9}},ExpressionUUID->"f31cf456-5e3d-49eb-8266-\
+29ab291a71ac"]
+},
+AutoGeneratedPackage->None,
+WindowToolbars->{},
+CellGrouping->Manual,
+WindowSize->{1493, 1035},
+WindowMargins->{{125, Automatic}, {Automatic, 39}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowCellLabel->True,
+ShowCellTags->False,
+FrontEndVersion->"13.2 for Mac OS X x86 (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"92d8db98-b191-4cfe-b2f6-8d3578e728e7"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 189, 4, 30, "Input",ExpressionUUID->"982d9ddd-1797-40a8-8dac-c7d97ec05ee5"],
+Cell[750, 26, 208, 4, 30, "Input",ExpressionUUID->"c1be56ab-826e-4ec7-8bf8-2f7d7f1474b2"],
+Cell[CellGroupData[{
+Cell[983, 34, 259, 6, 35, "Subsubsection",ExpressionUUID->"3da889c9-4e57-4137-bb84-f0c979c0e511",
+ Evaluatable->False,
+ InitializationCell->True],
+Cell[1245, 42, 737, 22, 275, "Input",ExpressionUUID->"cc7b08db-b847-457e-8332-db20a045af79",
+ InitializationCell->True],
+Cell[1985, 66, 481, 15, 199, "Input",ExpressionUUID->"6db0b10d-164c-4202-8c69-652b8451678b",
+ InitializationCell->True],
+Cell[2469, 83, 678, 14, 31, "Input",ExpressionUUID->"43eca1a2-a07f-4a01-a124-0a83c644e52f"]
+}, Open  ]],
+Cell[3162, 100, 2705, 82, 75, "Input",ExpressionUUID->"c76e7d1c-0bd7-472f-8417-b00ef7ccbce2"],
+Cell[5870, 184, 2794, 93, 96, "Input",ExpressionUUID->"bd0c9d24-e61e-4def-943b-78a72b7bd7e0"],
+Cell[CellGroupData[{
+Cell[8689, 281, 403, 7, 30, "Input",ExpressionUUID->"daff691c-76ed-41c8-8091-e017e6d1d633"],
+Cell[9095, 290, 206, 3, 34, "Output",ExpressionUUID->"d9c540d4-45ce-49ed-ad95-f2f4223f9db1"]
+}, Open  ]],
+Cell[9316, 296, 181, 4, 30, "Input",ExpressionUUID->"f31cf456-5e3d-49eb-8266-29ab291a71ac"]
+}
+]
+*)
+
