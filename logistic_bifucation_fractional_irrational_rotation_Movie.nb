@@ -1,0 +1,922 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30515,        914]
+NotebookOptionsPosition[     26441,        828]
+NotebookOutlinePosition[     27002,        849]
+CellTagsIndexPosition[     26959,        846]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ StyleBox["Tools for Analyzing Discrete Dynamical Systems:\nBifurcation \
+Diagrams\n",
+  TextAlignment->Center,
+  AspectRatioFixed->True,
+  FontFamily->"Times",
+  FontSize->18],
+ StyleBox["Written by Richard A. Holmgren\nlast modified June 18, 1996",
+  TextAlignment->Center,
+  AspectRatioFixed->True,
+  FontFamily->"Times",
+  FontWeight->"Plain"]
+}], "Input",
+ TextAlignment->Center,
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[551]:=",ExpressionUUID->"93e5d468-02cb-4c1a-bdee-e430faa5ecc5"],
+
+Cell[BoxData[
+ RowBox[{"Analyzing", " ", "Discrete", " ", "Dynamical", " ", "for", " ", 
+  "Tools", " ", 
+  RowBox[{"(", 
+   RowBox[{"Systems", ":", 
+    RowBox[{"Bifurcation", " ", "Diagrams"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.965985376007269*^9, 3.965985406433857*^9, 3.965986408310068*^9, {
+   3.965986540167369*^9, 3.9659865662244377`*^9}, 3.9659866073640537`*^9, 
+   3.965986660019471*^9, 3.965986700354597*^9, 3.9659868029808292`*^9, 
+   3.965986843404355*^9, 3.966072738269712*^9, 3.966074126499172*^9, 
+   3.966074233811213*^9, 3.966077056691128*^9, 3.966077149275666*^9, 
+   3.966154735921216*^9, 3.966154820976759*^9, 3.966154929696267*^9, 
+   3.966155368738925*^9, 3.966155464429101*^9, {3.96615556111067*^9, 
+   3.9661555823796186`*^9}},
+ CellLabel->
+  "Out[551]=",ExpressionUUID->"ff24e9de-6f99-4d63-8f5c-4b72eda8eb42"],
+
+Cell[BoxData[
+ RowBox[{"by", " ", "Richard", " ", "Written", " ", 
+  RowBox[{"A", ".", "Holmgren"}]}]], "Output",
+ CellChangeTimes->{
+  3.965985376007269*^9, 3.965985406433857*^9, 3.965986408310068*^9, {
+   3.965986540167369*^9, 3.9659865662244377`*^9}, 3.9659866073640537`*^9, 
+   3.965986660019471*^9, 3.965986700354597*^9, 3.9659868029808292`*^9, 
+   3.965986843404355*^9, 3.966072738269712*^9, 3.966074126499172*^9, 
+   3.966074233811213*^9, 3.966077056691128*^9, 3.966077149275666*^9, 
+   3.966154735921216*^9, 3.966154820976759*^9, 3.966154929696267*^9, 
+   3.966155368738925*^9, 3.966155464429101*^9, {3.96615556111067*^9, 
+   3.966155582381797*^9}},
+ CellLabel->
+  "Out[552]=",ExpressionUUID->"9201a9ee-ef97-4b4d-b9dd-382d6adc15ab"],
+
+Cell["\<\
+Syntax::sntxf: \"\" cannot be followed by \"iscrete Dynamical Systems:\".\
+\>", "Message", "MSG",
+ CellChangeTimes->{
+  3.965985376012601*^9, 3.965985406437937*^9, 3.9659864083150873`*^9, {
+   3.965986540172326*^9, 3.965986566229376*^9}, 3.9659866073686867`*^9, 
+   3.965986660024996*^9, 3.9659867003596582`*^9, 3.965986802985042*^9, 
+   3.965986843408663*^9, 3.966072738273986*^9, 3.966074126504101*^9, 
+   3.96607423381647*^9, 3.966077056695787*^9, 3.9660771492804613`*^9, 
+   3.966154735925642*^9, 3.9661548209817*^9, 3.966154929700981*^9, 
+   3.96615536874354*^9, 3.966155464433043*^9, {3.966155561115409*^9, 
+   3.966155582383712*^9}},
+ CellLabel->
+  "During evaluation of \
+In[551]:=",ExpressionUUID->"58a7cbe7-c52a-4009-bd58-ec7d53e4fc62"],
+
+Cell[BoxData["1996"], "Output",
+ CellChangeTimes->{
+  3.965985376007269*^9, 3.965985406433857*^9, 3.965986408310068*^9, {
+   3.965986540167369*^9, 3.9659865662244377`*^9}, 3.9659866073640537`*^9, 
+   3.965986660019471*^9, 3.965986700354597*^9, 3.9659868029808292`*^9, 
+   3.965986843404355*^9, 3.966072738269712*^9, 3.966074126499172*^9, 
+   3.966074233811213*^9, 3.966077056691128*^9, 3.966077149275666*^9, 
+   3.966154735921216*^9, 3.966154820976759*^9, 3.966154929696267*^9, 
+   3.966155368738925*^9, 3.966155464429101*^9, {3.96615556111067*^9, 
+   3.966155582385531*^9}},
+ CellLabel->
+  "Out[553]=",ExpressionUUID->"e9c2d121-4510-462c-9cc0-ebf99877aa01"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["\tThese programs were developed for use with the text  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["A First Course in Discrete Dynamical Systems, 2nd edition",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" by Richard A. Holmgren, ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["which was published by Springer-Verlag in 1996.  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["They are much faster than the programs described in the appendix \
+of the book.    Suggestions for improvement are gratefully accepted.  Please \
+contact Professor Holmgren at ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["rholmgre@alleg.edu",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier"],
+ StyleBox[" with suggestions and comments.  ",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"1ed602e3-5c5a-463a-9bd2-49f2c4c6a8fe"],
+
+Cell[CellGroupData[{
+
+Cell["Bifurcation Diagrams  --- Example 1.  ", "Section",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"401bf513-6f3d-404e-9704-92473c63fea9"],
+
+Cell[CellGroupData[{
+
+Cell["Description", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"f940cae2-eed0-4d4b-b387-461346bc1eb4"],
+
+Cell[TextData[{
+ StyleBox["\tThe following two sets of commands  will create a bifurcation \
+diagram for a parametrized family of functions.  In this example, we are \
+plotting a bifurcation diagram for Newton's function for the family of cubics \
+",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["q",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox["(",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["x",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[") = ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["x",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox["3",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSize->9,
+  FontVariations->{"CompatibilityType"->"Superscript"}],
+ StyleBox[" + ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["p x",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" + 1.  (This is Figure 12-10 on page 148 of the text.)  Notice \
+that the function defined in the program has two variables, ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["x",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" and the parmater value ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["p.",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox["\n\tIn the first set of code, the list of ordered pairs  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" is created.  Each ordered pair represents a point on the \
+bifurcation diagram.  To reduce computational time and to minimize the size \
+of the list  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[", the function ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["bifurcList",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" computes and temporarily stores the first retained iterate value \
+as ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["startPoint",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" for each parameter value  If under continued iteration, we return \
+to this starting value, creation of the list for that parameter value stops, \
+since additional points would be redundant.  To ensure that ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["startPoint",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" is close to the attracting set (if such a set exists), one should \
+choose  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" to be relatively large.  Note that there are tradeoffs in \
+selecting ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontWeight->"Bold"],
+ StyleBox[". On the one hand, as  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" gets large, the amount of computation necessary to find ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["startPoint",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" increases.  On the other hand, as ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["startPoint",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" becomes larger, the list  ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data ",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox["will become shorter.  It is worth experimenting with a small \
+number of parameter values (controlled by ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["psteps",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" in the program) and iterates before using large values for ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["psteps",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" and ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["iterates",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[".   In the example shown, computation time can be decrease by \
+about 30% by setting ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" to 250.  On the other hand the length of ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" increased by 25%.  To decrease storage size I chose to use the \
+higher value for ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[".  In this example I creae a high resolution image of the \
+bifurcation diagram.  A reasonably good set of data for a diagram can be \
+created in about 20 seconds by setting ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["firstIt ",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox["equal to 200, ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["iterates",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" at 100, ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["psteps",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" at 150.  \n\tThe second set of code  creates the bifurcation \
+diagram by using ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["ListPlot",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" to plot the list ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[".  ",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"f1575cac-0b8c-48f8-9953-a8d2b89080e6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Creating the list ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data,",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" the points in the bifurcation diagram.",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}], "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"b0c4989a-de9c-4653-9bc7-5a8add7b8d81"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+(*  p is the parameter   *)
+
+Clear[f,x,firstIt,iterates,seed,pmin,pmax,p,
+\tpsteps,step,bifurcList,data];
+
+f = Compile[{{x,_Real},{p,_Real}}, (2 x^3 - 1)/(3x^2 + p)];
+
+(* firstIt is the first iteration shown, 
+\titerates is the maximum number of iterations 
+\t\tcalculated after firstIt,
+\tseed is the starting point of the iteration. *)
+
+firstIt = 500;
+iterates = 150;
+seed = 0.0;
+
+(*  pmin and pmax define the bounds of the parameters,
+\t\tpsteps is the number of paramter values used.  *)
+
+pmin =  -1.3;
+pmax =  -1.25;
+psteps = 1000;
+
+p = N[pmin];
+step = N[(pmax - pmin)/psteps];
+
+bifurcList[p_] := Module[
+\t{startPoint = Nest[f[#,p]&,seed,firstIt]},
+\tMap[{p,#}&,
+\t\t\tFixedPointList[f[#,p]&,
+\t\t\t\tstartPoint,
+\t\t\t\titerates,
+\t\t\t\tSameTest -> (#2 == startPoint &)]]]
+
+Timing[
+data = \tPartition[
+\t\t\tFlatten[
+\t\t\t\tTable[
+\t\t\t\t\tbifurcList[t],
+\t\t\t\t\t{t,pmin,pmax,N[(pmax-pmin)/psteps]}]
+\t\t\t],
+\t\t2];
+]
+
+Length[data]\
+\>", "Input",
+ CellChangeTimes->{{3.965986799112358*^9, 3.965986799815377*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[554]:=",ExpressionUUID->"5c665463-03db-4ba2-ba53-07e878c58e97"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.265499`", ",", "Null"}], "}"}]], "Output",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.965985376206009*^9, 3.965985406580662*^9, 3.965986408485052*^9, {
+   3.965986540318317*^9, 3.965986566492875*^9}, 3.965986607628408*^9, 
+   3.9659866602010183`*^9, 3.965986700503667*^9, 3.965986803315866*^9, 
+   3.9659868437481737`*^9, 3.9660727386441793`*^9, 3.966074126882691*^9, 
+   3.966074234222872*^9, 3.966077057031639*^9, 3.9660771497869787`*^9, 
+   3.966154736236711*^9, 3.966154821442803*^9, 3.9661549301497803`*^9, 
+   3.9661553692133293`*^9, 3.966155464726274*^9, {3.966155561401844*^9, 
+   3.966155582685877*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "Out[577]=",ExpressionUUID->"5dfa602c-6e9e-4782-9d9b-aad1ec8555fd"],
+
+Cell[BoxData["48757"], "Output",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.965985376206009*^9, 3.965985406580662*^9, 3.965986408485052*^9, {
+   3.965986540318317*^9, 3.965986566492875*^9}, 3.965986607628408*^9, 
+   3.9659866602010183`*^9, 3.965986700503667*^9, 3.965986803315866*^9, 
+   3.9659868437481737`*^9, 3.9660727386441793`*^9, 3.966074126882691*^9, 
+   3.966074234222872*^9, 3.966077057031639*^9, 3.9660771497869787`*^9, 
+   3.966154736236711*^9, 3.966154821442803*^9, 3.9661549301497803`*^9, 
+   3.9661553692133293`*^9, 3.966155464726274*^9, {3.966155561401844*^9, 
+   3.966155582688156*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "Out[579]=",ExpressionUUID->"b84c4901-75c3-4e0a-8db0-0b0fa82254fe"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox[" The following code plots the data stored in the list ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data:",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"]
+}], "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"8e0a6fee-896e-4699-b02c-95c3b950bd62"],
+
+Cell["\<\
+(*  verticalMin and verticalMax define 
+\tthe bounds of the plotted values.  *)
+
+verticalMin =  -.29;
+verticalMax =  .29;
+
+Timing[
+\tListPlot[data,
+\t\tPlotRange -> All,
+\t\tAxesOrigin->{pmin,verticalMin},
+\t\tPlotStyle->{PointSize[.001]},
+\t\tFrame -> True,ColorFunction->Hue,ImageSize->Full]
+\t]
+\t
+\
+\>", "Input",
+ CellChangeTimes->{
+  3.965985340477707*^9, {3.9659867736733913`*^9, 3.965986790936987*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[580]:=",ExpressionUUID->"5fa441ef-854e-4c05-b319-82eb38112f31"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Bifurcation Diagrams --- Example 2.
+\t(avoiding overflow errors)  \
+\>", "Section",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"6ced1b38-c81c-4568-97e7-b033498719a9"],
+
+Cell[CellGroupData[{
+
+Cell["Description", "Subsubsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"79e3e571-3a54-44c6-b6ca-580356c67969"],
+
+Cell[TextData[{
+ StyleBox["\tThis example uses the same code as the previous example to plot \
+a bifurcation diagram for ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["f(x,p)",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" = ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["p x ",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox["(1-",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["x",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[").  The function ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["Chop[...]",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ StyleBox[" is used in defining ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["f",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"],
+ StyleBox[" to avoid overflow errors.    ",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}], "Text",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"ac985643-965f-49d1-80c9-c4c937f3affb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Finding the points in the bifurcation diagram.", "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"039078eb-f5f9-465a-a259-98a0bde11537"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+(*  p is the parameter   *)
+
+Clear[f,x,firstIt,iterates,seed,pmin,pmax,
+\tp,psteps,step,bifurcList,data];
+\
+\>", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, 
+   3.965985605097045*^9},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[588]:=",ExpressionUUID->"89330577-07fb-42e0-b072-4b847153a500"],
+
+Cell["f[x_,p_]:=p*Mod[1-GoldenRatio*x,1]*(x^(1/n)-x^(2/n));", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, {
+   3.965985609022097*^9, 3.9659856180536537`*^9}, 3.9659857325208597`*^9, {
+   3.965985799277775*^9, 3.965985802238842*^9}, {3.965986402905806*^9, 
+   3.965986405154805*^9}, {3.965986522169763*^9, 3.965986536435238*^9}, {
+   3.965986600472376*^9, 3.965986603817815*^9}, {3.965986648804014*^9, 
+   3.9659866560951843`*^9}, {3.9659866884981337`*^9, 3.965986695819825*^9}, {
+   3.9660740823136683`*^9, 3.966074100184204*^9}, {3.9660741946598797`*^9, 
+   3.966074198901307*^9}, {3.966077003380661*^9, 3.9660770201575823`*^9}, 
+   3.9660771458454733`*^9, {3.966154682514759*^9, 3.966154684272551*^9}, {
+   3.966154789133626*^9, 3.9661547937350473`*^9}, {3.966154861459577*^9, 
+   3.966154865636896*^9}, {3.966155025783018*^9, 3.966155029376281*^9}, {
+   3.966155507320931*^9, 3.966155538684811*^9}, 3.96615557754288*^9},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[592]:=",ExpressionUUID->"3309744c-db6d-4d1c-be4f-3f33eef3894a"],
+
+Cell["", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, {
+   3.965985609022097*^9, 3.9659856180536537`*^9}, 3.9659857325208597`*^9, {
+   3.965985799277775*^9, 3.965985802238842*^9}, {3.965986402905806*^9, 
+   3.965986405154805*^9}, {3.965986522169763*^9, 3.965986536435238*^9}, {
+   3.965986600472376*^9, 3.965986603817815*^9}, {3.965986648804014*^9, 
+   3.9659866560951843`*^9}, {3.9659866884981337`*^9, 3.965986695819825*^9}, {
+   3.9660740823136683`*^9, 3.966074100184204*^9}, {3.9660741946598797`*^9, 
+   3.966074198901307*^9}, {3.966077003380661*^9, 3.9660770201575823`*^9}, 
+   3.9660771458454733`*^9, {3.966154682514759*^9, 3.966154684272551*^9}, {
+   3.966154789133626*^9, 3.9661547937350473`*^9}, {3.966154861459577*^9, 
+   3.966154865636896*^9}, {3.966155025783018*^9, 3.966155029376281*^9}, {
+   3.966155507320931*^9, 3.966155532113205*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[593]:=",ExpressionUUID->"3119b47f-9206-43f7-97d1-d6f49fcafa75"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+(* firstIt is the first iteration shown, 
+\tnumber of iterates calculated after firstIt,
+\tseed is the starting point of the iteration. *)
+\
+\>", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, 
+   3.9659868399346037`*^9, {3.966155045655501*^9, 3.9661550734853992`*^9}, {
+   3.966155430082939*^9, 3.966155446275704*^9}, 3.9661555473023233`*^9},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[594]:=",ExpressionUUID->"0ec29cc8-927f-4b88-9e2f-529b1d622f48"],
+
+Cell["\<\
+firstIt = 250;
+iterates = 150;
+seed = .5;
+
+(*  pmin and pmax define the bounds of the parameters,
+\t\tpsteps is the number of paramter values used.  *)
+
+pmin =  2;
+pmax =  4;
+psteps = 2000;
+
+p = N[pmin];
+step = N[(pmax - pmin)/psteps];\
+\>", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, 
+   3.9659868399346037`*^9, {3.966155045655501*^9, 3.9661550734853992`*^9}, {
+   3.966155430082939*^9, 3.966155446275704*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[596]:=",ExpressionUUID->"1d0697f6-4440-4a4b-894b-b329b646987c"],
+
+Cell["\<\
+bifurcList[p_,n_] := Module[
+\t{startPoint = Nest[f[#,p]&,seed,firstIt]},
+\tMap[{p,#}&,
+\t\t\tFixedPointList[f[#,p]&,
+\t\t\t\tstartPoint,
+\t\t\t\titerates,
+\t\t\t\tSameTest -> (#2 == startPoint &)]]]\
+\>", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, 
+   3.9659868399346037`*^9, {3.966155045655501*^9, 3.9661550734853992`*^9}, {
+   3.966155430082939*^9, 3.966155446275704*^9}, 3.9661555547222557`*^9},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[608]:=",ExpressionUUID->"5924283c-c713-4ccf-914e-daf60515e2a7"],
+
+Cell["\<\
+
+data[n_]:= \tPartition[
+\t\t\tFlatten[
+\t\t\t\tTable[
+\t\t\t\t\tbifurcList[t,n],
+\t\t\t\t\t{t,pmin,pmax,N[(pmax-pmin)/psteps]}]
+\t\t\t],
+\t\t2];
+
+
+\
+\>", "Input",
+ CellChangeTimes->{{3.9659853545219717`*^9, 3.965985369561208*^9}, {
+   3.965985400336912*^9, 3.9659854024235363`*^9}, {3.965985438767046*^9, 
+   3.9659854539110117`*^9}, {3.965985512219709*^9, 3.965985532985573*^9}, 
+   3.9659868399346037`*^9, {3.966155045655501*^9, 3.9661550734853992`*^9}, {
+   3.966155430082939*^9, 3.966155446275704*^9}, 3.966155607902214*^9},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[614]:=",ExpressionUUID->"b03c1b04-63af-4904-ac54-dd67351ab45d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox[" The following code plots the data stored in the list ",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+ StyleBox["data:",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSlant->"Italic"]
+}], "Subsection",
+ Evaluatable->False,
+ AspectRatioFixed->
+  True,ExpressionUUID->"6c5d758c-8b45-47d6-ac61-68f33c527bd7"],
+
+Cell["\<\
+(*  verticalMin and verticalMax define 
+\t\tthe bounds of the plotted values.  *)
+
+verticalMin =  0;
+verticalMax =  1;
+\
+\>", "Input",
+ CellChangeTimes->{
+  3.965985304052598*^9, {3.9659854837159*^9, 3.965985492116881*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[619]:=",ExpressionUUID->"ce7ded9b-37df-4588-acca-fc1d0e90e9ba"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+
+\tgout=Flatten[ParallelTable[{ListPlot[data[n],
+\t\tPlotRange -> All,
+\t\tAxesOrigin->{pmin,verticalMin},
+\t\tPlotStyle->{PointSize[.001]},
+\t\tFrame -> \
+True,ColorFunction->Hue,ImageSize->{1920,1040}],ListPlot[data[n],
+\t\tPlotRange -> All,
+\t\tAxesOrigin->{pmin,verticalMin},
+\t\tPlotStyle->{PointSize[.001]},
+\t\tFrame -> True,ColorFunction->Hue,ImageSize->{1920,1040}]},{n,2,22}]];
+\t\
+\>", "Input",
+ CellChangeTimes->{
+  3.965985304052598*^9, {3.9659854837159*^9, 3.9659854850772867`*^9}, 
+   3.965986831429874*^9, {3.9660726869540977`*^9, 3.966072702911806*^9}, {
+   3.966155089349231*^9, 3.96615518688183*^9}, {3.966155282863536*^9, 
+   3.9661553414052467`*^9}},
+ AspectRatioFixed->True,
+ CellLabel->
+  "In[624]:=",ExpressionUUID->"2e31da18-929f-47cc-9851-306e159a2ed7"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<logistic_bifucation_fractional_irrational_rotation_movie.mp4\>\"", ",",
+    "gout"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9660718639822407`*^9, 3.966071938450045*^9}, {
+   3.966072020774136*^9, 3.9660720228547564`*^9}, {3.966072240740444*^9, 
+   3.966072249236082*^9}, {3.9660727111357517`*^9, 3.966072718847332*^9}, {
+   3.966074069818362*^9, 3.966074073442325*^9}, {3.966074206964673*^9, 
+   3.966074208363817*^9}, {3.966077033089514*^9, 3.966077047576632*^9}, 
+   3.966077138446033*^9, 3.9661546997523737`*^9, 3.96615480226153*^9, 
+   3.9661548783561172`*^9, {3.9661551964060173`*^9, 3.966155228017029*^9}},
+ CellLabel->
+  "In[627]:=",ExpressionUUID->"7e01bd67-fa7a-4bb1-a738-7d107c81ff93"],
+
+Cell[BoxData[
+ RowBox[{"(*", "end", "*)"}]], "Input",
+ CellChangeTimes->{{3.966155234922995*^9, 3.966155240264558*^9}},
+ CellLabel->
+  "In[628]:=",ExpressionUUID->"2a4bc581-4654-41bf-8b78-c55a003b6799"]
+},
+WindowToolbars->{},
+CellGrouping->Manual,
+WindowSize->{1195, 521},
+WindowMargins->{{Automatic, 254}, {Automatic, 59}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowCellLabel->True,
+ShowCellTags->False,
+FrontEndVersion->"13.2 for Mac OS X x86 (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8d9ca805-83eb-4e89-afec-304885f9f861"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 508, 16, 82, "Input",ExpressionUUID->"93e5d468-02cb-4c1a-bdee-e430faa5ecc5"],
+Cell[1091, 40, 846, 16, 34, "Output",ExpressionUUID->"ff24e9de-6f99-4d63-8f5c-4b72eda8eb42"],
+Cell[1940, 58, 740, 13, 34, "Output",ExpressionUUID->"9201a9ee-ef97-4b4d-b9dd-382d6adc15ab"],
+Cell[2683, 73, 756, 14, 22, "Message",ExpressionUUID->"58a7cbe7-c52a-4009-bd58-ec7d53e4fc62"],
+Cell[3442, 89, 658, 11, 34, "Output",ExpressionUUID->"e9c2d121-4510-462c-9cc0-ebf99877aa01"]
+}, Open  ]],
+Cell[4115, 103, 1032, 29, 81, "Text",ExpressionUUID->"1ed602e3-5c5a-463a-9bd2-49f2c4c6a8fe",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[5172, 136, 161, 3, 67, "Section",ExpressionUUID->"401bf513-6f3d-404e-9704-92473c63fea9",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[5358, 143, 140, 3, 45, "Subsubsection",ExpressionUUID->"f940cae2-eed0-4d4b-b387-461346bc1eb4",
+ Evaluatable->False],
+Cell[5501, 148, 7017, 246, 312, "Text",ExpressionUUID->"f1575cac-0b8c-48f8-9953-a8d2b89080e6",
+ Evaluatable->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12555, 399, 410, 14, 54, "Subsection",ExpressionUUID->"b0c4989a-de9c-4653-9bc7-5a8add7b8d81",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[12990, 417, 1143, 50, 822, "Input",ExpressionUUID->"5c665463-03db-4ba2-ba53-07e878c58e97"],
+Cell[14136, 469, 764, 15, 34, "Output",ExpressionUUID->"5dfa602c-6e9e-4782-9d9b-aad1ec8555fd",
+ Evaluatable->False],
+Cell[14903, 486, 712, 13, 34, "Output",ExpressionUUID->"b84c4901-75c3-4e0a-8db0-0b0fa82254fe",
+ Evaluatable->False]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15664, 505, 344, 11, 54, "Subsection",ExpressionUUID->"8e0a6fee-896e-4699-b02c-95c3b950bd62",
+ Evaluatable->False],
+Cell[16011, 518, 527, 21, 282, "Input",ExpressionUUID->"5fa441ef-854e-4c05-b319-82eb38112f31"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16587, 545, 197, 6, 105, "Section",ExpressionUUID->"6ced1b38-c81c-4568-97e7-b033498719a9",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[16809, 555, 140, 3, 45, "Subsubsection",ExpressionUUID->"79e3e571-3a54-44c6-b6ca-580356c67969",
+ Evaluatable->False],
+Cell[16952, 560, 1151, 44, 58, "Text",ExpressionUUID->"ac985643-965f-49d1-80c9-c4c937f3affb",
+ Evaluatable->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18140, 609, 172, 3, 54, "Subsection",ExpressionUUID->"039078eb-f5f9-465a-a259-98a0bde11537",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[18337, 616, 483, 13, 102, "Input",ExpressionUUID->"89330577-07fb-42e0-b072-4b847153a500"],
+Cell[18823, 631, 1213, 17, 30, "Input",ExpressionUUID->"3309744c-db6d-4d1c-be4f-3f33eef3894a"],
+Cell[20039, 650, 1139, 17, 30, "Input",ExpressionUUID->"3119b47f-9206-43f7-97d1-d6f49fcafa75"],
+Cell[CellGroupData[{
+Cell[21203, 671, 640, 13, 84, "Input",ExpressionUUID->"0ec29cc8-927f-4b88-9e2f-529b1d622f48"],
+Cell[21846, 686, 712, 22, 246, "Input",ExpressionUUID->"1d0697f6-4440-4a4b-894b-b329b646987c"],
+Cell[22561, 710, 700, 16, 138, "Input",ExpressionUUID->"5924283c-c713-4ccf-914e-daf60515e2a7"],
+Cell[23264, 728, 647, 20, 210, "Input",ExpressionUUID->"b03c1b04-63af-4904-ac54-dd67351ab45d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23972, 755, 344, 11, 54, "Subsection",ExpressionUUID->"6c5d758c-8b45-47d6-ac61-68f33c527bd7",
+ Evaluatable->False],
+Cell[24319, 768, 341, 12, 120, "Input",ExpressionUUID->"ce7ded9b-37df-4588-acca-fc1d0e90e9ba"]
+}, Open  ]]
+}, Open  ]],
+Cell[24687, 784, 789, 21, 210, "Input",ExpressionUUID->"2e31da18-929f-47cc-9851-306e159a2ed7"],
+Cell[25479, 807, 753, 13, 30, "Input",ExpressionUUID->"7e01bd67-fa7a-4bb1-a738-7d107c81ff93"],
+Cell[26235, 822, 202, 4, 30, "Input",ExpressionUUID->"2a4bc581-4654-41bf-8b78-c55a003b6799"]
+}
+]
+*)
+
